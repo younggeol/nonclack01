@@ -45,7 +45,7 @@
         </div>
         <!-- END: SECTION_1 -->
 
-        <!-- 구역 1 소스보기 배지 그룹 (섹션 하단 이동) -->
+        <!-- 구역 1 소스보기 배지 그룹 -->
         <div class="section-code-badge">
           <span class="badge-label">안내카드 소스:</span>
           <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
@@ -73,7 +73,7 @@
         </div>
         <!-- END: SECTION_2 -->
 
-        <!-- 구역 2 소스보기 배지 그룹 (섹션 하단 이동) -->
+        <!-- 구역 2 소스보기 배지 그룹 -->
         <div class="section-code-badge">
           <span class="badge-label">탭바 소스:</span>
           <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="html">HTML</button>
@@ -89,7 +89,7 @@
         <!-- [패널 A: 상세설계 화면] -->
         <div class="tab-panel active" id="panel-detail">
           
-          <!-- 구역 3: 고객명 검색 및 피보험자 상세정보 영역 -->
+          <!-- 구역 3: 고객명 검색 영역 -->
           <section class="search-info-section relative-section">
             
             <!-- START: SECTION_3 -->
@@ -125,52 +125,64 @@
 
             </div>
 
-            <!-- 피보험자 정보 상세 카드 영역 (초기에는 숨김 처리 후 "홍길동" 입력 시 노출) -->
-            <div class="client-detail-card-wrapper hidden" id="client-info-card">
-              <div class="client-detail-card">
-                <div class="client-info-list">
-                  
-                  <div class="client-info-row">
-                    <span class="info-label">피보험자명</span>
-                    <span class="info-value text-dark" id="info-name-val">홍길동</span>
-                  </div>
-                  
-                  <div class="client-info-row">
-                    <span class="info-label">성별</span>
-                    <span class="info-value text-dark">여</span>
-                  </div>
-                  
-                  <div class="client-info-row">
-                    <span class="info-label">연령</span>
-                    <span class="info-value text-dark">30</span>
-                  </div>
-                  
-                  <div class="client-info-row">
-                    <span class="info-label">급수</span>
-                    <span class="info-value text-dark">1</span>
-                  </div>
-                  
-                  <div class="client-info-row">
-                    <span class="info-label">직업</span>
-                    <span class="info-value text-grey">전업주부</span>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
             <!-- 고객 검색 결과가 없을 때의 피드백 (홍길동 외 입력 시) -->
             <div class="search-empty-feedback hidden" id="search-empty-box">
               <p>해당 고객은 미등록 상태입니다.<br><strong>[신규고객등록]</strong> 버튼을 통해 먼저 고객을 등록해 주세요.</p>
             </div>
             <!-- END: SECTION_3 -->
 
-            <!-- 구역 3 소스보기 배지 그룹 (섹션 하단 이동) -->
+            <!-- 구역 3 소스보기 배지 그룹 -->
             <div class="section-code-badge">
               <span class="badge-label">상세정보 소스:</span>
               <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="html">HTML</button>
               <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="css">CSS</button>
               <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="js">JS</button>
+            </div>
+
+          </section>
+
+          <!-- 구역 5: 피보험자 정보 상세 카드 섹션 (신규 정적 추가) -->
+          <section class="search-info-section relative-section" id="static-card-section">
+
+            <!-- START: SECTION_5 -->
+            <div class="client-detail-card" id="client-static-card">
+              <div class="client-info-list">
+                
+                <div class="client-info-row">
+                  <span class="info-label">피보험자명</span>
+                  <span class="info-value text-dark">홍길동</span>
+                </div>
+                
+                <div class="client-info-row">
+                  <span class="info-label">성별</span>
+                  <span class="info-value text-dark">여</span>
+                </div>
+                
+                <div class="client-info-row">
+                  <span class="info-label">연령</span>
+                  <span class="info-value text-dark">30</span>
+                </div>
+                
+                <div class="client-info-row">
+                  <span class="info-label">급수</span>
+                  <span class="info-value text-dark">1</span>
+                </div>
+                
+                <div class="client-info-row">
+                  <span class="info-label">직업</span>
+                  <span class="info-value text-grey">전업주부</span>
+                </div>
+
+              </div>
+            </div>
+            <!-- END: SECTION_5 -->
+
+            <!-- 구역 5 소스보기 배지 그룹 -->
+            <div class="section-code-badge">
+              <span class="badge-label">피보험자 정보 소스:</span>
+              <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="html">HTML</button>
+              <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="css">CSS</button>
+              <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="js">JS</button>
             </div>
 
           </section>
@@ -208,7 +220,7 @@
       </button>
       <!-- END: SECTION_4 -->
 
-      <!-- 구역 4 소스보기 배지 그룹 (섹션 하단 이동, 버튼바 내부 배치) -->
+      <!-- 구역 4 소스보기 배지 그룹 -->
       <div class="section-code-badge bottom-badge">
         <span class="badge-label">버튼바 소스:</span>
         <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="html">HTML</button>
@@ -225,7 +237,7 @@
     <span id="page-toast-text">알림 메시지</span>
   </div>
 
-  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립전 연결 -->
   <script src="../assets/js/inspector.js"></script>
   <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
   <script src="page01.js"></script>

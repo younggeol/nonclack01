@@ -91,7 +91,7 @@ body {
 
 /* 안내 타이틀 카드 섹션 */
 .info-card-section {
-  padding: 24px 20px 32px 20px;
+  padding: 24px 20px 16px 20px;
 }
 
 
@@ -137,7 +137,7 @@ body {
 /* 설계 방식 탭 바 섹션 */
 .tab-section {
   background: #ffffff;
-  padding-bottom: 30px;
+  padding: 0 0 16px 0;
 }
 
 /* START: SECTION_2 */
@@ -210,10 +210,10 @@ body {
 
 /* START: SECTION_3 */
 /* ==========================================
-   [구역 3] 고객 검색 인풋 및 피보험자 상세정보 카드 관련 스타일
+   [구역 3] 고객 검색 인풋 영역 관련 스타일
    ========================================== */
 .search-info-section {
-  padding: 24px 20px 36px 20px;
+  padding: 24px 20px 16px 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -332,17 +332,25 @@ body {
   transform: translateY(-1px);
 }
 
-/* 피보험자 정보 출력용 상세카드 */
-.client-detail-card-wrapper {
-  width: 100%;
-  animation: fade-in 0.3s ease-out;
+/* 검색 실패 피드백 안내창 */
+.search-empty-feedback {
+  background: #fff1f2;
+  border: 1px solid #ffe4e6;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  color: var(--danger);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+  animation: fade-in 0.2s ease-out;
 }
+/* END: SECTION_3 */
 
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
+/* START: SECTION_5 */
+/* ==========================================
+   [구역 5] 피보험자 정보 상세 카드 관련 스타일 (정적 추가)
+   ========================================== */
 .client-detail-card {
   width: 100%;
   padding: 16px;
@@ -350,7 +358,22 @@ body {
   box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   border-radius: 16px;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #DDDDDD; /* 기본 테두리 */
+  transition: all var(--transition-normal);
+}
+
+/* 피보험자 카드 활성화 하이라이트 상태 (검색 성공 시) */
+.client-detail-card.active-card {
+  border-color: #222222;
+  box-shadow: 0 4px 14px rgba(34, 34, 34, 0.1);
+  transform: scale(1.02);
+}
+
+/* 피보험자 카드 비활성화 흐림 상태 (미등록 검색 시) */
+.client-detail-card.inactive-card {
+  opacity: 0.4;
+  filter: grayscale(80%);
+  pointer-events: none;
 }
 
 .client-info-list {
@@ -390,19 +413,7 @@ body {
   color: #333333;
   font-weight: 500;
 }
-
-/* 검색 실패 피드백 안내창 */
-.search-empty-feedback {
-  background: #fff1f2;
-  border: 1px solid #ffe4e6;
-  border-radius: var(--radius-md);
-  padding: 16px;
-  color: var(--danger);
-  font-size: 13px;
-  line-height: 1.5;
-  text-align: center;
-}
-/* END: SECTION_3 */
+/* END: SECTION_5 */
 
 
 /* 단순설계 탭 안내 그래픽 */

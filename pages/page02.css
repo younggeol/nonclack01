@@ -1,0 +1,515 @@
+/* ==========================================
+   [보장분석 결과 안내 스타일 - page02.css]
+   이 파일은 보장분석 결과를 안내하는 page02 페이지의 레이아웃,
+   안내 카드 디자인 및 전역 리셋 속성들을 정의합니다.
+   ========================================== */
+
+/* 1. 외부 Pretendard 폰트 임포트 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+/* 2. 전역 배치 및 바디 서식 */
+body {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+/* 모바일 화면 래퍼 */
+.app-wrapper {
+  width: 100%;
+  max-width: 375px; /* 모바일 폭 기기 최적화 */
+  height: 85vh;
+  max-height: 720px;
+  background: #F5F7F8; /* 앱 기본 배경을 밝은 회색으로 변경 (카드들이 돋보이도록 조정) */
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 상단 헤더 바 */
+.app-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px;
+}
+
+.btn-back {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222222;
+  transition: opacity var(--transition-fast);
+}
+
+.btn-back:hover {
+  opacity: 0.7;
+}
+
+.btn-back svg {
+  width: 20px;
+  height: 20px;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.header-empty {
+  width: 36px;
+}
+
+/* 스크롤 가능한 본문 영역 */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 안내 카드 배치 섹션 */
+.info-card-section {
+  padding: 24px 20px 16px 20px;
+}
+
+
+/* START: SECTION_1 */
+/* ==========================================
+   [구역 1] 보장분석 결과 안내 카드 관련 스타일
+   ========================================== */
+.analysis-container {
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background: #ffffff; /* 가로폭 100% 툴바 결합을 위해 카드 표면색을 흰색으로 통일 */
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+  display: inline-flex;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 수직 정렬 콘텐츠 래퍼 */
+.analysis-content {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+  display: inline-flex;
+  width: 100%;
+}
+
+/* 안내 타이틀 서식 */
+.analysis-title {
+  width: 327px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  color: #222222;
+  font-size: 26px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 700;
+  line-height: 32px;
+  word-wrap: break-word;
+}
+
+/* 상세설명 텍스트 서식 */
+.analysis-description {
+  width: 327px;
+  color: #222222;
+  font-size: 15px;
+  font-family: Pretendard, sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
+}
+/* END: SECTION_1 */
+
+
+/* START: SECTION_2 */
+/* ==========================================
+   [구역 2] 사망 및 후유장해 요약 그룹 관련 스타일 (인라인 추출)
+   ========================================== */
+.coverage-group {
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  display: inline-flex;
+}
+
+/* 그룹 헤더 가로줄 */
+.coverage-header {
+  align-self: stretch;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+}
+
+/* 카테고리 원형 아이콘 배경 */
+.coverage-icon-circle {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  background: #F6F6F6;
+  border-radius: 999px;
+}
+
+/* 아이콘 벡터 정렬 래퍼 */
+.coverage-icon-inner {
+  width: 20px;
+  height: 20px;
+  left: 6px;
+  top: 6px;
+  position: absolute;
+  overflow: hidden;
+}
+
+/* 피그마 절대좌표 벡터 조각 디자인 디테일 추출 */
+.icon-part-1 { width: 6.35px; height: 3.27px; left: 11.35px; top: 1.82px; position: absolute; background: #C13352; }
+.icon-part-2 { width: 1.41px; height: 1.89px; left: 16.28px; top: 1.93px; position: absolute; background: #E55373; }
+.icon-part-3 { width: 4.83px; height: 4.38px; left: 5.99px; top: 0.05px; position: absolute; background: #C13352; }
+.icon-part-4 { width: 14.42px; height: 16.40px; left: 2.31px; top: 3.65px; position: absolute; background: #DD4264; }
+.icon-part-5 { width: 13.20px; height: 12.55px; left: 2.31px; top: 3.65px; position: absolute; background: #E55373; }
+.icon-part-6 { width: 2.77px; height: 4.24px; left: 10.59px; top: 4.54px; position: absolute; background: #C13352; }
+.icon-part-7 { width: 3.59px; height: 4.92px; left: 11.48px; top: 12.17px; position: absolute; background: #E55373; }
+.icon-part-8 { width: 3.19px; height: 4.17px; left: 3.79px; top: 5.50px; position: absolute; background: white; }
+
+/* 그룹 타이틀 서식 */
+.coverage-group-title {
+  flex: 1;
+  color: #212121;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 24px;
+  word-wrap: break-word;
+}
+
+/* 카드 배치 가로 행 */
+.coverage-cards-row {
+  align-self: stretch;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  display: inline-flex;
+}
+
+/* 개별 보장 상태 카드 */
+.status-card {
+  flex: 1;
+  height: 100px;
+  max-width: 100px;
+  min-width: 88px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: #ffffff; /* 기본 카드 색상 흰색 */
+  border-radius: 12px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  display: inline-flex;
+  border: 1px solid var(--border-color);
+  box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+/* 카드 호버 피드백 */
+.status-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+}
+
+/* 상태 뱃지 공통 스타일 */
+.status-tag {
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+}
+
+.status-tag .tag-text {
+  font-size: 10px;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+/* (A) 부족 상태 빨간 뱃지 */
+.tag-red {
+  background: #FCE9E9;
+}
+.tag-red .tag-text {
+  color: #BB1B21;
+}
+
+/* (B) 충분 상태 파란 뱃지 */
+.tag-blue {
+  background: #D9F2FF;
+}
+.tag-blue .tag-text {
+  color: #0049A3;
+}
+
+/* 보장 항목명 서식 */
+.status-card-title {
+  align-self: stretch;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20.72px;
+  word-wrap: break-word;
+}
+/* END: SECTION_2 */
+
+
+/* START: SECTION_3 */
+/* ==========================================
+   [구역 3] 진단비 요약 그룹 관련 스타일 (인라인 추출)
+   ========================================== */
+/* 카드 가로폭 한도 도달 시 자연스럽게 줄바꿈 처리 */
+.coverage-cards-row.wrap-row {
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+/* 피그마 절대좌표 진단비 아이콘 조각 디자인 디테일 추출 */
+.diag-part-1 { width: 16.24px; height: 19.10px; left: 1.88px; top: 0px; position: absolute; background: #E2E5E6; }
+.diag-part-2 { width: 13.44px; height: 14.95px; left: 1.88px; top: 0px; position: absolute; background: #E9EBEC; }
+.diag-part-3 { width: 12.87px; height: 14.37px; left: 5.21px; top: 0.01px; position: absolute; background: #8BA3AB; }
+.diag-part-4 { width: 5.86px; height: 1.48px; left: 12.54px; top: 14.73px; position: absolute; background: white; }
+.diag-part-5 { width: 9.05px; height: 9.05px; left: 10.95px; top: 10.95px; position: absolute; }
+.diag-part-5-inner { width: 9.05px; height: 9.05px; left: 0px; top: 0px; position: absolute; background: #DC3B5E; }
+.diag-part-5-glow { width: 5.07px; height: 5.04px; left: 1.98px; top: 2.02px; position: absolute; background: linear-gradient(315deg, #FFD2D2 0%, white 57%, white 100%); }
+
+/* (C) 미가입 상태 회색 뱃지 */
+.tag-gray {
+  background: #E9EAEE;
+}
+.tag-gray .tag-text {
+  color: #55585D;
+}
+/* END: SECTION_3 */
+
+
+/* START: SECTION_4 */
+/* ==========================================
+   [구역 4] 의료비 · 수술 · 입원 요약 그룹 관련 스타일
+   ========================================== */
+/* 높이 86px 카드 맞춤 정의 */
+.status-card.h-86 {
+  height: 86px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* 의료비 아이콘 오프셋 보정 */
+.coverage-icon-inner.icon-med-custom {
+  left: 7px;
+  top: 6px;
+}
+
+/* 피그마 절대좌표 의료비 아이콘 조각 디자인 디테일 추출 */
+.med-part-1 { width: 14.01px; height: 11.22px; left: 5.99px; top: 8.78px; position: absolute; background: #34344F; }
+.med-part-2 { width: 14.75px; height: 12.99px; left: 0px; top: 0.04px; position: absolute; background: #4193D2; }
+.med-part-3 { width: 6.99px; height: 6.12px; left: 3.68px; top: 10.33px; position: absolute; background: #99BADC; }
+.med-part-4 { width: 3.04px; height: 3.04px; left: 2.74px; top: 0.05px; position: absolute; background: #34344F; }
+.med-part-5 { width: 3.04px; height: 3.04px; left: 8.96px; top: 0.05px; position: absolute; background: #34344F; }
+.med-part-6 { width: 3.38px; height: 3.38px; left: 16.62px; top: 8.78px; position: absolute; background: #4193D2; }
+
+/* 입원비 일당 텍스트 래핑 및 미세조정 */
+.status-card-title.text-wrap {
+  line-height: 1.2;
+}
+.status-card-title .sub-title-desc {
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.85;
+}
+/* END: SECTION_4 */
+
+
+/* START: SECTION_5 */
+/* ==========================================
+   [구역 5] 하단 고정 버튼 영역 스타일
+   ========================================== */
+.app-footer-bar {
+  background: #ffffff;
+  padding: 19px 24px;
+  box-shadow: 0px -4px 10px rgba(34, 34, 34, 0.08);
+  z-index: 10;
+  border-top: 1px solid var(--border-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bottom-action-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* 액션 버튼 공통 */
+.btn-action-outline,
+.btn-action-primary {
+  flex: 1;
+  height: 52px;
+  border-radius: 50px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+/* Secondary (아웃라인) 버튼 */
+.btn-action-outline {
+  background: #ffffff;
+  color: #222222;
+  border: 2px solid #222222;
+}
+
+.btn-action-outline:hover {
+  background: #f8fafc;
+}
+
+/* Primary (채우기) 버튼 */
+.btn-action-primary {
+  background: #EF3B24;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-action-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* 하단 버튼용 소스 뷰어 배지 미세조정 */
+.section-code-badge.bottom-badge {
+  margin-top: 4px;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 8px;
+}
+/* END: SECTION_5 */
+
+
+/* 4. 유틸리티 및 알림 레이아웃 */
+.toast-message {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222222;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-message.show {
+  bottom: 40px;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .app-wrapper,
+  .app-header {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .app-content {
+    background: #0f172a;
+  }
+  .btn-back,
+  .header-title {
+    color: #f8fafc;
+  }
+  .analysis-container {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .analysis-title,
+  .analysis-description {
+    color: #f8fafc;
+  }
+  .coverage-icon-circle {
+    background: #0f172a;
+  }
+  .coverage-group-title {
+    color: #f8fafc;
+  }
+  .status-card {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .status-card-title {
+    color: #f8fafc;
+  }
+  .tag-gray {
+    background: #334155;
+  }
+  .tag-gray .tag-text {
+    color: #94a3b8;
+  }
+  .app-footer-bar {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.3);
+  }
+  .btn-action-outline {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: #f8fafc;
+  }
+  .btn-action-outline:hover {
+    background: #334155;
+  }
+}

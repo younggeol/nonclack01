@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const searchInputWrapper = document.getElementById('search-input-box'); // 검색창 감싸개
   const customerNameInput = document.getElementById('customer-name-input'); // 검색 입력 인풋
   const btnFillDemo = document.getElementById('btn-fill-demo'); // "홍길동" 데모 입력 유도 링크
-  const clientInfoCard = document.getElementById('client-info-card'); // 피보험자 정보 상세 카드
   const searchEmptyBox = document.getElementById('search-empty-box'); // 검색 결과 없음 안내박스
   
   // 기능형 버튼들
@@ -107,24 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleCustomerSearch('홍길동'); // 검색 판단 로직 가동
   });
 
-  // (4) 고객명 검색어 판별 제어 함수
-  function handleCustomerSearch(query) {
-    if (query === '홍길동') {
-      // 홍길동 입력 시 상세 정보 카드 표시, 에러 메시지 가림
-      clientInfoCard.classList.remove('hidden');
-      searchEmptyBox.classList.add('hidden');
-    } else if (query === '') {
-      // 공백 시 상세 정보 및 에러 메시지 모두 가림
-      clientInfoCard.classList.add('hidden');
-      searchEmptyBox.classList.add('hidden');
-    } else {
-      // 다른 이름 입력 시 상세 카드 가리고 에러 피드백 노출
-      clientInfoCard.classList.add('hidden');
-      searchEmptyBox.classList.remove('hidden');
-    }
-  }
-
-  // (5) 신규고객등록 & 가입설계동의 버튼 클릭 연동
+  // (4) 신규고객등록 & 가입설계동의 버튼 클릭 연동
   btnNewCustomer.addEventListener('click', () => {
     showToast('신규고객등록 팝업창을 호출합니다.');
   });
@@ -133,6 +115,33 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('모바일 가입설계 동의 카카오톡 전송을 요청했습니다.');
   });
   // END: SECTION_3
+
+
+  // (5) 고객명 검색어 판별 제어 함수
+  function handleCustomerSearch(query) {
+    const staticCard = document.getElementById('client-static-card');
+
+    // START: SECTION_5
+    // ==========================================
+    // [구역 5] 피보험자 카드 활성/비활성 비주얼 제어 로직 (정적 추가 연동)
+    // ==========================================
+    if (query === '홍길동') {
+      // 홍길동 입력 시 카드 하이라이트 활성화
+      staticCard.classList.add('active-card');
+      staticCard.classList.remove('inactive-card');
+      searchEmptyBox.classList.add('hidden');
+    } else if (query === '') {
+      // 공백 시 원래 상태로 복원
+      staticCard.classList.remove('active-card', 'inactive-card');
+      searchEmptyBox.classList.add('hidden');
+    } else {
+      // 다른 이름 입력 시 카드 흐리게 처리하고 에러 피드백 노출
+      staticCard.classList.add('inactive-card');
+      staticCard.classList.remove('active-card');
+      searchEmptyBox.classList.remove('hidden');
+    }
+    // END: SECTION_5
+  }
 
 
   // START: SECTION_4

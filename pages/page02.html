@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>보장분석 결과 안내</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
+  <link rel="stylesheet" href="page02.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 -->
+  <main class="app-wrapper">
+    
+    <!-- 모바일 앱 화면 헤더 영역 -->
+    <header class="app-header">
+      <div class="header-bar">
+        <button type="button" class="btn-back" aria-label="이전 페이지">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="header-title">보장분석</span>
+        <div class="header-empty"></div>
+      </div>
+    </header>
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 구역 1: 보장분석 결과 안내 타이틀 카드 섹션 -->
+      <section class="info-card-section relative-section">
+        
+        <!-- START: SECTION_1 -->
+        <div class="analysis-container">
+          <div class="analysis-content">
+            <h1 class="analysis-title">보장분석 결과를<br/>참고하세요</h1>
+            <p class="analysis-description">상세내용은 보장분석 화면에서 확인해 주세요.</p>
+          </div>
+        </div>
+        <!-- END: SECTION_1 -->
+
+        <!-- 구역 1 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">안내카드 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 구역 2: 사망 및 후유장해 보장 요약 섹션 -->
+      <section class="info-card-section relative-section">
+
+        <!-- START: SECTION_2 -->
+        <div class="coverage-group" id="death-disability-group">
+          <!-- 헤더 타이틀 및 카테고리 아이콘 -->
+          <div class="coverage-header">
+            <div class="coverage-icon-circle">
+              <div class="coverage-icon-inner">
+                <div class="icon-part-1"></div>
+                <div class="icon-part-2"></div>
+                <div class="icon-part-3"></div>
+                <div class="icon-part-4"></div>
+                <div class="icon-part-5"></div>
+                <div class="icon-part-6"></div>
+                <div class="icon-part-7"></div>
+                <div class="icon-part-8"></div>
+              </div>
+            </div>
+            <h2 class="coverage-group-title">사망 · 후유장해</h2>
+          </div>
+          
+          <!-- 보장 항목 리스트 카드 행 -->
+          <div class="coverage-cards-row">
+            <!-- (A) 사망 보장 카드 (부족 상태) -->
+            <div class="status-card" data-state="Default" data-type="부족">
+              <div class="status-tag tag-red" data-size="Medium (20)" data-type="Red">
+                <span class="tag-text">부족</span>
+              </div>
+              <div class="status-card-title">사망</div>
+            </div>
+            <!-- (B) 후유장해 보장 카드 (충분 상태) -->
+            <div class="status-card" data-state="Default" data-type="충분">
+              <div class="status-tag tag-blue" data-size="Medium (20)" data-type="Blue">
+                <span class="tag-text">충분</span>
+              </div>
+              <div class="status-card-title">후유장해</div>
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_2 -->
+
+        <!-- 구역 2 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">사망·장해 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 구역 3: 진단비 요약 섹션 (신규 추가 작업) -->
+      <section class="info-card-section relative-section">
+
+        <!-- START: SECTION_3 -->
+        <div class="coverage-group" id="diagnosis-fee-group">
+          <!-- 헤더 타이틀 및 카테고리 아이콘 -->
+          <div class="coverage-header">
+            <div class="coverage-icon-circle">
+              <!-- 피그마에서 추출된 아기자기한 진단비 아이콘 일러스트의 조각 래핑 -->
+              <div class="coverage-icon-inner">
+                <div class="diag-part-1"></div>
+                <div class="diag-part-2"></div>
+                <div class="diag-part-3"></div>
+                <div class="diag-part-4"></div>
+                <div class="diag-part-5">
+                  <div class="diag-part-5-inner"></div>
+                  <div class="diag-part-5-glow"></div>
+                </div>
+              </div>
+            </div>
+            <h2 class="coverage-group-title">진단비</h2>
+          </div>
+
+          <!-- 보장 항목 리스트 카드 행 (줄바꿈 wrap 적용) -->
+          <div class="coverage-cards-row wrap-row">
+            <!-- (A) 암 카드 (부족 상태) -->
+            <div class="status-card" data-state="Default" data-type="부족">
+              <div class="status-tag tag-red" data-size="Medium (20)" data-type="Red">
+                <span class="tag-text">부족</span>
+              </div>
+              <div class="status-card-title">암</div>
+            </div>
+            <!-- (B) 뇌혈관 질환 카드 (충분 상태) -->
+            <div class="status-card" data-state="Default" data-type="충분">
+              <div class="status-tag tag-blue" data-size="Medium (20)" data-type="Blue">
+                <span class="tag-text">충분</span>
+              </div>
+              <div class="status-card-title">뇌혈관 질환</div>
+            </div>
+            <!-- (C) 심장질환 카드 (부족 상태) -->
+            <div class="status-card" data-state="Default" data-type="부족">
+              <div class="status-tag tag-red" data-size="Medium (20)" data-type="Red">
+                <span class="tag-text">부족</span>
+              </div>
+              <div class="status-card-title">심장질환</div>
+            </div>
+            <!-- (D) 치매 카드 (미가입 상태) -->
+            <div class="status-card" data-state="Default" data-type="미가입">
+              <div class="status-tag tag-gray" data-size="Medium (20)" data-type="Gray">
+                <span class="tag-text">미가입</span>
+              </div>
+              <div class="status-card-title">치매</div>
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_3 -->
+
+        <!-- 구역 3 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">진단비 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 구역 4: 의료비 · 수술 · 입원 섹션 -->
+      <section class="info-card-section relative-section">
+
+        <!-- START: SECTION_4 -->
+        <div class="coverage-group" id="medical-surgery-group">
+          <!-- 헤더 타이틀 및 카테고리 아이콘 -->
+          <div class="coverage-header">
+            <div class="coverage-icon-circle">
+              <!-- 피그마에서 추출된 의료비 아이콘 일러스트의 조각 래핑 -->
+              <div class="coverage-icon-inner icon-med-custom">
+                <div class="med-part-1"></div>
+                <div class="med-part-2"></div>
+                <div class="med-part-3"></div>
+                <div class="med-part-4"></div>
+                <div class="med-part-5"></div>
+                <div class="med-part-6"></div>
+              </div>
+            </div>
+            <h2 class="coverage-group-title">의료비 · 수술 · 입원</h2>
+          </div>
+
+          <!-- 보장 항목 리스트 카드 행 (86px 높이 및 줄바꿈 wrap 적용) -->
+          <div class="coverage-cards-row wrap-row">
+            <!-- (A) 실손의료비 카드 (부족 상태) -->
+            <div class="status-card h-86" data-state="Default" data-type="부족">
+              <div class="status-tag tag-red" data-size="Medium (20)" data-type="Red">
+                <span class="tag-text">부족</span>
+              </div>
+              <div class="status-card-title">실손의료비</div>
+            </div>
+            <!-- (B) 수술비 카드 (부족 상태) -->
+            <div class="status-card h-86" data-state="Default" data-type="부족">
+              <div class="status-tag tag-red" data-size="Medium (20)" data-type="Red">
+                <span class="tag-text">부족</span>
+              </div>
+              <div class="status-card-title">수술비</div>
+            </div>
+            <!-- (C) 입원비 (일당) 카드 (충분 상태) -->
+            <div class="status-card h-86" data-state="Default" data-type="충분">
+              <div class="status-tag tag-blue" data-size="Medium (20)" data-type="Blue">
+                <span class="tag-text">충분</span>
+              </div>
+              <div class="status-card-title text-wrap">입원비<br/><span class="sub-title-desc">(일당)</span></div>
+            </div>
+            <!-- (D) 치료비 카드 (미가입 상태) -->
+            <div class="status-card h-86" data-state="Default" data-type="미가입">
+              <div class="status-tag tag-gray" data-size="Medium (20)" data-type="Gray">
+                <span class="tag-text">미가입</span>
+              </div>
+              <div class="status-card-title">치료비</div>
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_4 -->
+
+        <!-- 구역 4 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">의료·수술 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- 구역 5: 하단 고정 테마 및 보험료 선택 액션 바 -->
+    <footer class="app-footer-bar relative-section" data-type="1">
+      
+      <!-- START: SECTION_5 -->
+      <div class="bottom-action-buttons">
+        <button type="button" class="btn-action-outline" data-property-1="secondary">
+          <span>테마 및 보험료 선택</span>
+        </button>
+        <button type="button" class="btn-action-primary" data-property-1="primary">
+          <span>테마 및 보험료 선택</span>
+        </button>
+      </div>
+      <!-- END: SECTION_5 -->
+
+      <!-- 구역 5 소스보기 배지 그룹 (100% 너비 툴바) -->
+      <div class="section-code-badge bottom-badge">
+        <span class="badge-label">버튼바 소스:</span>
+        <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="html">HTML</button>
+        <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="css">CSS</button>
+        <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="js">JS</button>
+      </div>
+
+    </footer>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
+  <script src="page02.js"></script>
+</body>
+</html>
