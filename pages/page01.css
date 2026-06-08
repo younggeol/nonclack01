@@ -1,0 +1,583 @@
+/* ==========================================
+   [AI가입설계 도우미 스타일 - page01.css]
+   이 파일은 AI가입설계 상세 화면의 전반적인 UI 구성, 
+   인풋 요소 포커싱, 탭바 슬라이더, 상세 정보 카드 및 
+   하단 고정 버튼(Sticky Footer) 레이아웃을 담당합니다.
+   ========================================== */
+
+/* 1. 외부 Pretendard 폰트 임포트 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+/* 2. 전역 중앙 배치 정렬 */
+body {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+/* 모바일 앱 기기 래퍼 */
+.app-wrapper {
+  width: 100%;
+  max-width: 375px; /* 모바일 전형적인 가로폭 */
+  height: 85vh;
+  max-height: 720px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 모바일 상단 네비바 헤더 */
+.app-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px;
+}
+
+.btn-back {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222222;
+  transition: opacity var(--transition-fast);
+}
+
+.btn-back:hover {
+  opacity: 0.7;
+}
+
+.btn-back svg {
+  width: 20px;
+  height: 20px;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.header-empty {
+  width: 36px;
+}
+
+/* 스크롤 본문 공간 */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+/* 안내 타이틀 카드 섹션 */
+.info-card-section {
+  padding: 24px 20px 32px 20px;
+}
+
+
+/* START: SECTION_1 */
+/* ==========================================
+   [구역 1] AI가입설계 도우미 안내 카드 관련 스타일
+   ========================================== */
+.assistant-container {
+  width: 100%;
+  padding: 24px 20px;
+  background: #f8fafc; /* 연한 회색 배경 */
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.assistant-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.assistant-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #222222;
+  line-height: 1.3;
+}
+
+.assistant-description {
+  font-size: 14px;
+  color: #222222;
+  line-height: 1.6;
+}
+
+.highlight {
+  color: var(--tag-category-text-sale, #BB1B21); /* 강조용 다크레드 */
+  font-weight: 600;
+}
+/* END: SECTION_1 */
+
+
+/* 설계 방식 탭 바 섹션 */
+.tab-section {
+  background: #ffffff;
+  padding-bottom: 30px;
+}
+
+/* START: SECTION_2 */
+/* ==========================================
+   [구역 2] 상세설계 / 단순설계 탭 버튼 바 관련 스타일
+   ========================================== */
+.tabs-container {
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  background: white;
+  border-bottom: 1px #DDDDDD solid;
+}
+
+.tabs-flex {
+  display: flex;
+  width: 100%;
+}
+
+/* 개별 탭 버튼 스타일 (상세설계 / 단순설계) */
+.tab-item {
+  flex: 1;
+  height: 56px;
+  position: relative;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+/* 탭 버튼 내 텍스트 정의 */
+.tab-item .tab-text {
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+/* 활성화 상태 탭 (Active) */
+.tab-item.active {
+  border-bottom: 2px #222222 solid;
+}
+
+.tab-item.active .tab-text {
+  color: #222222;
+  font-weight: 700;
+}
+
+/* 비활성화 상태 탭 (Default) */
+.tab-item:not(.active) .tab-text {
+  color: #888888;
+  font-weight: 400;
+}
+/* END: SECTION_2 */
+
+
+/* 탭 전환 패널 관리 */
+.tab-panel {
+  display: none;
+  flex: 1;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+
+/* START: SECTION_3 */
+/* ==========================================
+   [구역 3] 고객 검색 인풋 및 피보험자 상세정보 카드 관련 스타일
+   ========================================== */
+.search-info-section {
+  padding: 24px 20px 36px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.search-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* 고객명 검색창 래퍼 */
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  background: #ffffff;
+  border-radius: 32px;
+  border: 2px #CCCCCC solid; /* 기본 Normal 상태 회색 보더 */
+  display: flex;
+  align-items: center;
+  padding: 0 48px 0 24px;
+  transition: all var(--transition-fast);
+}
+
+/* 검색 입력 영역 활성화 (Focus/Active) 상태 보더 강조 */
+.search-input-wrapper.active-border,
+.search-input-wrapper:focus-within {
+  border-color: #222222; /* 검은색 보더 */
+}
+
+/* 실제 인풋 박스 서식 */
+#customer-name-input {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  color: #222222;
+  font-weight: 400;
+  caret-color: #D94916; /* 인풋 깜빡이 포커스 캐럿을 주황/레드색으로 변경 */
+}
+
+#customer-name-input::placeholder {
+  color: #666666;
+  font-weight: 200;
+}
+
+/* 돋보기 버튼 스타일 */
+.btn-search-icon {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-svg-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 실제 인터랙션 데모 유도 가이드 배너 */
+.search-hint-banner {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 12px;
+}
+
+.btn-demo-fill {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* 신규고객등록 / 가입설계동의 버튼 행 */
+.action-buttons-row {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+/* 보조 액션 버튼 (아웃라인 버튼) */
+.btn-action-secondary {
+  flex: 1;
+  height: 52px;
+  padding: 16px 12px;
+  background: #ffffff;
+  border-radius: 50px;
+  border: 2px solid #222222; /* 아웃라인 테두리 */
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--transition-fast);
+}
+
+.btn-action-secondary span {
+  width: 100%;
+  text-align: center;
+  color: #222222;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.btn-action-secondary:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+/* 피보험자 정보 출력용 상세카드 */
+.client-detail-card-wrapper {
+  width: 100%;
+  animation: fade-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.client-detail-card {
+  width: 100%;
+  padding: 16px;
+  background: white;
+  box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid #DDDDDD;
+}
+
+.client-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* 행 간격 */
+}
+
+/* 각 정보 줄 정렬 */
+.client-info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.info-label {
+  width: 104px;
+  color: #666666;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.info-value {
+  width: 183px;
+  font-size: 15px;
+  line-height: 19px;
+}
+
+.info-value.text-dark {
+  color: #222222;
+  font-weight: 500;
+}
+
+.info-value.text-grey {
+  color: #333333;
+  font-weight: 500;
+}
+
+/* 검색 실패 피드백 안내창 */
+.search-empty-feedback {
+  background: #fff1f2;
+  border: 1px solid #ffe4e6;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  color: var(--danger);
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+/* END: SECTION_3 */
+
+
+/* 단순설계 탭 안내 그래픽 */
+.simple-guide-section {
+  padding: 24px 20px;
+}
+
+.simple-guide-box {
+  background: #f8fafc;
+  border-radius: var(--radius-md);
+  padding: 24px 16px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.guide-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+
+.simple-guide-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 8px;
+}
+
+.simple-guide-box p {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.simple-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+.simple-input,
+.simple-select {
+  width: 100%;
+  height: 44px;
+  border: 1px solid var(--border-color);
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 13px;
+}
+
+
+/* START: SECTION_4 */
+/* ==========================================
+   [구역 4] 하단 고정 설계 시작하기 액션 바 관련 스타일
+   ========================================== */
+.app-footer-bar {
+  width: 100%;
+  padding: 16px 24px 12px 24px;
+  background: white;
+  box-shadow: 0px -4px 10px rgba(34, 34, 34, 0.08); /* 상단 음영 그림자 */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 10;
+}
+
+/* AI설계 시작하기 메인 버튼 */
+.btn-start-primary {
+  flex: 1;
+  height: 52px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  background: #EF3B24; /* 제공된 오렌지 레드 브랜드 색상 */
+  border-radius: 50px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--transition-fast);
+}
+
+.btn-start-primary span {
+  width: 100%;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.btn-start-primary:hover {
+  background: #d62b16; /* 호버 시 약간 다크레드로 명도 변화 */
+  box-shadow: 0 4px 12px rgba(239, 59, 36, 0.3);
+}
+/* END: SECTION_4 */
+
+
+/* 11. 유틸리티 클래스 */
+.hidden {
+  display: none !important;
+}
+
+/* 토스트 알림 메시지 */
+.toast-message {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222222;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-message.show {
+  bottom: 100px;
+}
+
+/* 다크테마 대응 폰트색 */
+@media (prefers-color-scheme: dark) {
+  .app-wrapper,
+  .app-header,
+  .tabs-container,
+  .tab-item,
+  .btn-action-secondary,
+  .client-detail-card,
+  .app-footer-bar {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .app-content {
+    background: #0f172a;
+  }
+  .btn-back,
+  .header-title,
+  .tab-item.active .tab-text,
+  .btn-action-secondary span,
+  .info-value.text-dark {
+    color: #f8fafc;
+  }
+  .search-input-wrapper {
+    background: #0f172a;
+    border-color: #334155;
+  }
+  .search-input-wrapper.active-border,
+  .search-input-wrapper:focus-within {
+    border-color: #f8fafc;
+  }
+  #customer-name-input {
+    color: #f8fafc;
+  }
+  .search-svg-icon circle,
+  .search-svg-icon line {
+    stroke: #f8fafc;
+  }
+  .simple-guide-box {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .simple-guide-box h3 {
+    color: #f8fafc;
+  }
+  .simple-input,
+  .simple-select {
+    background: #0f172a;
+    border-color: #334155;
+    color: #f8fafc;
+  }
+}

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI가입설계 도우미</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
+  <link rel="stylesheet" href="page01.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 -->
+  <main class="app-wrapper">
+    
+    <!-- 모바일 앱 화면 헤더 영역 -->
+    <header class="app-header">
+      <div class="header-bar">
+        <button type="button" class="btn-back" aria-label="이전 페이지">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <span class="header-title">가입설계</span>
+        <div class="header-empty"></div>
+      </div>
+    </header>
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 구역 1: 안내 타이틀 카드 섹션 -->
+      <section class="info-card-section relative-section">
+        
+        <!-- START: SECTION_1 -->
+        <div class="assistant-container">
+          <div class="assistant-content">
+            <h1 class="assistant-title">AI가입설계 도우미</h1>
+            <p class="assistant-description">
+              등록고객은 <span class="highlight">고객명 검색 후 AI설계</span> 진행 가능하고,<br/>
+              미등록고객은 <span class="highlight">신규고객등록</span> 또는 <span class="highlight">단순설계</span>로 <br/>
+              진행 가능합니다.
+            </p>
+          </div>
+        </div>
+        <!-- END: SECTION_1 -->
+
+        <!-- 구역 1 소스보기 배지 그룹 (섹션 하단 이동) -->
+        <div class="section-code-badge">
+          <span class="badge-label">안내카드 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 구역 2: 설계 방식 탭 바 (상세설계 / 단순설계) -->
+      <section class="tab-section relative-section">
+        
+        <!-- START: SECTION_2 -->
+        <div class="tabs-container">
+          <div class="tabs-flex">
+            <!-- 상세설계 탭 (초기 활성화) -->
+            <button type="button" class="tab-item active" data-tab="detail" data-property-1="active">
+              <span class="tab-text">상세설계</span>
+            </button>
+            <!-- 단순설계 탭 -->
+            <button type="button" class="tab-item" data-tab="simple" data-property-1="default">
+              <span class="tab-text">단순설계</span>
+            </button>
+          </div>
+        </div>
+        <!-- END: SECTION_2 -->
+
+        <!-- 구역 2 소스보기 배지 그룹 (섹션 하단 이동) -->
+        <div class="section-code-badge">
+          <span class="badge-label">탭바 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 설계 탭별 본문 패널 컨테이너 -->
+      <div class="tab-panels">
+        
+        <!-- [패널 A: 상세설계 화면] -->
+        <div class="tab-panel active" id="panel-detail">
+          
+          <!-- 구역 3: 고객명 검색 및 피보험자 상세정보 영역 -->
+          <section class="search-info-section relative-section">
+            
+            <!-- START: SECTION_3 -->
+            <!-- 고객 검색 입력창 그룹 -->
+            <div class="search-form-group">
+              
+              <!-- (A) 검색창 Normal 상태 및 실제 입력 폼 -->
+              <div class="search-input-wrapper" id="search-input-box">
+                <input type="text" id="customer-name-input" placeholder="고객명을 입력하세요." autocomplete="off">
+                <!-- 돋보기 모양 검색 아이콘 -->
+                <button type="button" class="btn-search-icon" aria-label="검색">
+                  <svg viewBox="0 0 20 20" fill="none" class="search-svg-icon">
+                    <circle cx="8.5" cy="8.5" r="7.5" stroke="#222222" stroke-width="1.5"/>
+                    <line x1="13.78" y1="13.78" x2="18" y2="18" stroke="#222222" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- (B) 검색 유도를 돕는 가이드용 예시 배너 (Active 상태 시각화용 힌트) -->
+              <div class="search-hint-banner">
+                <span>실제 작동: </span><button type="button" class="btn-demo-fill" id="btn-fill-demo">"홍길동" 입력해보기</button>
+              </div>
+
+              <!-- 신규고객등록 & 가입설계동의 버튼 그룹 -->
+              <div class="action-buttons-row">
+                <button type="button" class="btn-action-secondary" data-property-1="secondary" id="btn-new-customer">
+                  <span>신규고객등록</span>
+                </button>
+                <button type="button" class="btn-action-secondary" data-property-1="secondary" id="btn-consent">
+                  <span>가입설계동의</span>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- 피보험자 정보 상세 카드 영역 (초기에는 숨김 처리 후 "홍길동" 입력 시 노출) -->
+            <div class="client-detail-card-wrapper hidden" id="client-info-card">
+              <div class="client-detail-card">
+                <div class="client-info-list">
+                  
+                  <div class="client-info-row">
+                    <span class="info-label">피보험자명</span>
+                    <span class="info-value text-dark" id="info-name-val">홍길동</span>
+                  </div>
+                  
+                  <div class="client-info-row">
+                    <span class="info-label">성별</span>
+                    <span class="info-value text-dark">여</span>
+                  </div>
+                  
+                  <div class="client-info-row">
+                    <span class="info-label">연령</span>
+                    <span class="info-value text-dark">30</span>
+                  </div>
+                  
+                  <div class="client-info-row">
+                    <span class="info-label">급수</span>
+                    <span class="info-value text-dark">1</span>
+                  </div>
+                  
+                  <div class="client-info-row">
+                    <span class="info-label">직업</span>
+                    <span class="info-value text-grey">전업주부</span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- 고객 검색 결과가 없을 때의 피드백 (홍길동 외 입력 시) -->
+            <div class="search-empty-feedback hidden" id="search-empty-box">
+              <p>해당 고객은 미등록 상태입니다.<br><strong>[신규고객등록]</strong> 버튼을 통해 먼저 고객을 등록해 주세요.</p>
+            </div>
+            <!-- END: SECTION_3 -->
+
+            <!-- 구역 3 소스보기 배지 그룹 (섹션 하단 이동) -->
+            <div class="section-code-badge">
+              <span class="badge-label">상세정보 소스:</span>
+              <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="html">HTML</button>
+              <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="css">CSS</button>
+              <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="js">JS</button>
+            </div>
+
+          </section>
+
+        </div>
+
+        <!-- [패널 B: 단순설계 화면] -->
+        <div class="tab-panel" id="panel-simple">
+          <section class="simple-guide-section">
+            <div class="simple-guide-box">
+              <div class="guide-icon">📝</div>
+              <h3>단순설계 모드</h3>
+              <p>고객 등록 절차 없이 간편 정보 입력만으로 빠르게 가상 가입설계를 시작할 수 있습니다.</p>
+              <div class="simple-form">
+                <input type="number" placeholder="가상 연령 입력 (예: 30)" class="simple-input">
+                <select class="simple-select">
+                  <option value="male">남성</option>
+                  <option value="female" selected>여성</option>
+                </select>
+              </div>
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 구역 4: 하단 고정 설계 시작하기 액션 바 -->
+    <footer class="app-footer-bar relative-section" data-type="1">
+      
+      <!-- START: SECTION_4 -->
+      <button type="button" class="btn-start-primary" data-property-1="primary" id="btn-start-design">
+        <span>AI설계 시작하기</span>
+      </button>
+      <!-- END: SECTION_4 -->
+
+      <!-- 구역 4 소스보기 배지 그룹 (섹션 하단 이동, 버튼바 내부 배치) -->
+      <div class="section-code-badge bottom-badge">
+        <span class="badge-label">버튼바 소스:</span>
+        <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="html">HTML</button>
+        <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="css">CSS</button>
+        <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="js">JS</button>
+      </div>
+
+    </footer>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
+  <script src="page01.js"></script>
+</body>
+</html>
