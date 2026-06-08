@@ -1,0 +1,320 @@
+/* ==========================================
+   [대화형 태스크 매니저 스타일 - tasks-app.css]
+   이 파일은 모바일 앱과 유사하게 다듬어진 UI 구조,
+   인풋 요소 포커싱, 항목 체크 시의 취소선 효과 및 
+   삭제 단추의 오버레이 등 동적인 모션 스타일링을 담당합니다.
+   ========================================== */
+
+/* 1. 앱 레이아웃 전체 컨테이너 */
+body {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 420px; /* 전형적인 스마트폰의 최대 세로 가로폭 규격 지정 */
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 85vh; /* 화면 길이에 구애받지 않도록 기기 높이 비례 설정 */
+  max-height: 720px;
+  overflow: hidden;
+}
+
+/* 2. 앱 헤더 및 타이틀 */
+.app-header {
+  margin-bottom: 20px;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.app-header h1 {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-color);
+}
+
+.date-badge {
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--primary-light);
+  color: var(--primary);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.header-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* 3. 할 일 입력 섹션 */
+.task-input-section {
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  display: flex;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 4px 4px 4px 16px;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* 입력 칸 포커싱 시 피드백 아웃라인 */
+.input-wrapper:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+  background: var(--surface-color);
+}
+
+.input-wrapper input {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+.input-wrapper input::placeholder {
+  color: var(--text-muted);
+}
+
+/* 등록 버튼 (+) */
+.btn-add {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.btn-add:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+/* 4. 필터링 탭 메뉴 */
+.filter-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-tab {
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  background: var(--bg-color);
+  transition: all var(--transition-fast);
+}
+
+.filter-tab:hover {
+  color: var(--text-color);
+}
+
+.filter-tab.active {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* 5. 할 일 리스트 영역 */
+.task-list-section {
+  flex: 1;
+  overflow-y: auto; /* 내용물이 길어지면 내부에서 스크롤 작동 */
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* 개별 할 일 아이템 스타일 */
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--surface-color);
+  transition: all var(--transition-normal);
+  animation: slide-in 0.3s ease-out; /* 추가될 때 미끄러지듯 등장 */
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-item:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 커스텀 체크박스 정렬 */
+.task-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-color);
+}
+
+/* 체크박스 원래 외형 숨김 */
+.task-checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+/* 커스텀 체크박스 외형 디자인 */
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2.5px solid var(--border-color);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all var(--transition-fast);
+}
+
+.custom-checkbox svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: all var(--transition-fast);
+}
+
+/* 체크 박스 체크 시 활성화 처리 */
+.task-checkbox-label input[type="checkbox"]:checked + .custom-checkbox {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.task-checkbox-label input[type="checkbox"]:checked + .custom-checkbox svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 체크된 할 일의 글씨 가독성 저하 및 취소선 효과 */
+.task-checkbox-label input[type="checkbox"]:checked ~ .task-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+/* 삭제 버튼 (쓰레기통 아이콘) */
+.btn-delete-task {
+  color: var(--text-muted);
+  opacity: 0; /* 평소에는 숨겨져 있다가 카드 호버 시 노출 */
+  transition: all var(--transition-fast);
+}
+
+.task-item:hover .btn-delete-task {
+  opacity: 1;
+}
+
+.btn-delete-task:hover {
+  color: var(--danger);
+}
+
+.btn-delete-task svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* 6. 목록이 없는 상태 화면 (Empty State) */
+.empty-state {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  height: 100%;
+}
+
+.empty-icon {
+  width: 56px;
+  height: 56px;
+  color: var(--border-color);
+  background: var(--bg-color);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.empty-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.empty-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.empty-desc {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  max-width: 220px;
+}
+
+/* 7. 앱 하단 정보 요약 요약바 */
+.app-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.btn-clear-completed {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.btn-clear-completed:hover {
+  color: var(--danger);
+}

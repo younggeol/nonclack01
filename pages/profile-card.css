@@ -1,0 +1,266 @@
+/* ==========================================
+   [프로필 카드 스타일 - profile-card.css]
+   이 파일은 글래스모피즘 프로필 카드의 배경 특수효과, 
+   입체감 있는 버튼, 호버 시 반응하는 인터랙티브 모션 스타일을 정의합니다.
+   ========================================== */
+
+/* 1. 배경 그래픽 데코레이션 (유리 효과를 극대화하기 위한 컬러 구체) */
+.background-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1; /* 메인 콘텐츠 카드 뒤로 숨김 */
+}
+
+/* 둥글고 밝은 컬러 구체 정의 */
+.circle {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(60px); /* 픽셀을 흐려서 부드러운 그라데이션 광원 효과 형성 */
+  opacity: 0.6;
+  animation: float-around 12s infinite alternate ease-in-out; /* 천천히 둥둥 뜨는 모션 */
+}
+
+.circle-1 {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  top: 15%;
+  left: -5%;
+}
+
+.circle-2 {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(135deg, #ec4899, #f43f5e);
+  bottom: 20%;
+  right: -5%;
+  animation-delay: -4s; /* 두 구체의 모션 박자가 엇갈리도록 딜레이 지정 */
+}
+
+/* 구체 부유 애니메이션 정의 */
+@keyframes float-around {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateY(30px) scale(1.15) rotate(45deg);
+  }
+}
+
+/* 2. 카드 정렬 레이아웃 */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* 3. 글래스모피즘 카드 본체 디자인 */
+.profile-card {
+  width: 100%;
+  max-width: 340px; /* 모바일 기기 화면 폭(375px) 안쪽에 들어차도록 설정 */
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px); /* 유리 질감을 위한 뒤쪽 화면 흐림 효과 */
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+/* 카드 자체 호버 시 부드럽게 들리는 모션 */
+.profile-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.15);
+}
+
+/* 4. 카드 상단 배경 이미지 */
+.card-cover {
+  height: 110px;
+  background: linear-gradient(135deg, #6366f1, #a855f7, #ec4899); /* 트렌디한 3색 그라데이션 */
+}
+
+/* 5. 카드 바디 영역 */
+.card-body {
+  padding: 0 24px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* 6. 아바타 사진 영역 */
+.profile-avatar {
+  width: 96px;
+  height: 96px;
+  margin-top: -48px; /* 커버 이미지 위에 걸치도록 마이너스 마진 활용 */
+  margin-bottom: 16px;
+  position: relative;
+  border-radius: var(--radius-full);
+  background: var(--surface-color);
+  box-shadow: var(--shadow-md);
+  padding: 4px; /* 흰색 테두리선 마진 효과 */
+}
+
+/* 접속 중 뱃지 표시 */
+.status-indicator {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 14px;
+  height: 14px;
+  background: var(--secondary); /* 녹색 */
+  border: 2px solid var(--surface-color);
+  border-radius: var(--radius-full);
+}
+
+/* 7. 타이틀 서식 */
+.profile-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-color);
+  margin-bottom: 4px;
+}
+
+.profile-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+.profile-bio {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* 8. 통계 지표 정보 영역 (Grid) */
+.profile-stats {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 16px 0;
+  margin-bottom: 24px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-color);
+}
+
+.stat-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* 9. 대화형 액션 버튼 */
+.profile-actions {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 팔로우 메인 버튼 */
+.btn-primary {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+/* 팔로우 토글 활성화(Following) 상태 */
+.btn-primary.following {
+  background: var(--secondary); /* 초록색 피드백 */
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* 메시지 서브 버튼 */
+.btn-secondary {
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.btn-secondary:hover {
+  background: var(--border-color);
+}
+
+/* 10. 소셜 네트워크 링크 */
+.profile-socials {
+  display: flex;
+  gap: 16px;
+}
+
+.social-link {
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.social-link:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* 11. 토스트 메시지 알림 스타일 */
+.toast-message {
+  position: fixed;
+  bottom: -60px; /* 초기에는 화면 바깥 하단에 숨김 */
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-color);
+  color: var(--surface-color);
+  padding: 12px 24px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  font-size: 13px;
+  font-weight: 600;
+  z-index: 10000;
+  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 활성화되어 화면 위로 슬라이딩된 토스트 상태 */
+.toast-message.show {
+  bottom: 84px; /* 소스뷰어 독 높이(약 64px)보다 위로 올라오도록 설정 */
+}

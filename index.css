@@ -1,0 +1,212 @@
+/* ==========================================
+   [메인 목록 페이지 스타일 - index.css]
+   이 파일은 포트폴리오 허브의 메인 뷰포트 정렬, 카드 그리드,
+   카테고리 필터 버튼 탭 및 호버 효과 등을 정의합니다.
+   ========================================== */
+
+/* 1. 기본 레이아웃 구성 */
+body {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+.hub-container {
+  width: 100%;
+  max-width: 680px; /* 전체 카드가 한눈에 정렬되도록 최적 가로 폭 지정 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 2. 헤더 영역 스타일 */
+.hub-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.hub-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  background: var(--primary-light);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  margin-bottom: 12px;
+}
+
+.hub-header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-color);
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.hub-description {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 540px;
+  margin: 0 auto 24px auto;
+}
+
+/* 3. 대화형 카테고리 필터 바 */
+.filter-bar {
+  display: inline-flex;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  padding: 4px;
+  border-radius: var(--radius-full);
+  margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-tab {
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.filter-tab:hover {
+  color: var(--text-color);
+}
+
+.filter-tab.active {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* 4. 카드 그리드 및 리스트 스타일 */
+.card-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+/* 개별 카드 스타일 */
+.page-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 카드 호버 시 들리는 입체감 연출 및 보더 강조 */
+.page-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.page-card:hover .card-arrow {
+  color: var(--primary);
+  transform: translateX(4px);
+}
+
+/* 카드 아이콘 스타일 */
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--primary-light);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* 카드 본문 텍스트 스타일 */
+.card-content {
+  flex: 1;
+}
+
+.card-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.card-content h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+
+.card-content p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+/* 카드 내 태그 */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-tags span {
+  font-size: 10px;
+  font-weight: 600;
+  background: var(--bg-color);
+  color: var(--text-muted);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+/* 카드 우측 화살표 안내 기호 */
+.card-arrow {
+  color: var(--border-color);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-arrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* 필터링 미선택 카드 가리기 효과용 클래스 */
+.page-card.hide {
+  display: none;
+}
+
+/* 5. 푸터 영역 스타일 */
+.hub-footer {
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  font-size: 12px;
+  color: var(--text-muted);
+}

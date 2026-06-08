@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>금융 요약 대시보드</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준) -->
+  <link rel="stylesheet" href="finance-dashboard.css">
+</head>
+<body class="dark-theme"> <!-- 대시보드는 세련된 다크 테마 고정으로 연출 -->
+
+  <!-- [메인 모바일 대시보드 프레임] 금융 앱 전용 레이아웃 -->
+  <main class="dashboard-container">
+    
+    <!-- 1. 앱 헤더 영역: 환영 인사 및 프로필 간이 배지 -->
+    <header class="dashboard-header">
+      <div class="user-greeting">
+        <p class="greeting-subtitle">반가워요</p>
+        <h1 class="greeting-title">홍길동 님</h1>
+      </div>
+      <div class="header-avatar" title="내 정보 정보">
+        <svg viewBox="0 0 32 32" fill="currentColor">
+          <circle cx="16" cy="16" r="16" fill="#3b82f6"/>
+          <path d="M16 8a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 18c6.627 0 12-3.134 12-7s-5.373-7-12-7-12 3.134-12 7 5.373 7 12 7z" fill="#ffffff" fill-opacity="0.8"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- 2. 자산 요약 카드 영역 (잔액 토글 기능 포함) -->
+    <section class="asset-card">
+      <div class="asset-info">
+        <div class="asset-title-row">
+          <span class="asset-label">나의 주거래 총 자산</span>
+          <!-- 눈 모양 아이콘 (금액 보이기/숨기기 토글) -->
+          <button type="button" class="btn-toggle-balance" id="btn-balance-toggle" aria-label="잔액 보이기/숨기기">
+            <svg id="eye-open-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg id="eye-closed-icon" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </button>
+        </div>
+        <div class="asset-amount" id="asset-amount-display">₩3,450,200</div>
+      </div>
+      <div class="asset-trend">
+        <span class="trend-badge positive">지난달 대비 +12.4%</span>
+      </div>
+    </section>
+
+    <!-- 3. 주간 소비 요약 SVG 라인 차트 영역 -->
+    <section class="chart-section">
+      <h2 class="section-title">주간 소비 통계</h2>
+      <div class="chart-container">
+        <!-- SVG 곡선 차트 -->
+        <svg class="line-chart" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- 차트 하단 투명 그라데이션 영역 채우기용 -->
+            <linearGradient id="chart-glow" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3" />
+              <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.0" />
+            </linearGradient>
+          </defs>
+          
+          <!-- 그리드 가로선 안내 가이드라인 -->
+          <line x1="0" y1="30" x2="320" y2="30" stroke="#1e293b" stroke-dasharray="4" />
+          <line x1="0" y1="75" x2="320" y2="75" stroke="#1e293b" stroke-dasharray="4" />
+          
+          <!-- 그라데이션 영역 (곡선 하단 채우기) -->
+          <path d="M 10 110 L 10 60 Q 60 40 110 85 T 210 25 T 310 50 L 310 110 Z" fill="url(#chart-glow)" />
+
+          <!-- 소비 트렌드 선 곡선 (SVG Quadratic/Cubic Beziers) -->
+          <path d="M 10 60 Q 60 40 110 85 T 210 25 T 310 50" fill="none" stroke="#3b82f6" stroke-width="3.5" stroke-linecap="round" />
+
+          <!-- 차트 데이터 노드 (동적 호버 인터랙션을 적용할 동그라미 버텍스들) -->
+          <circle cx="10" cy="60" r="5" class="chart-dot" data-day="월" data-value="18,000" />
+          <circle cx="60" cy="40" r="5" class="chart-dot" data-day="화" data-value="32,000" />
+          <circle cx="110" cy="85" r="5" class="chart-dot" data-day="수" data-value="12,000" />
+          <circle cx="160" cy="55" r="5" class="chart-dot" data-day="목" data-value="22,000" />
+          <circle cx="210" cy="25" r="5" class="chart-dot" data-day="금" data-value="45,000" />
+          <circle cx="260" cy="70" r="5" class="chart-dot" data-day="토" data-value="15,000" />
+          <circle cx="310" cy="50" r="5" class="chart-dot" data-day="일" data-value="28,000" />
+        </svg>
+
+        <!-- 차트 하단 요일 라벨 축 -->
+        <div class="chart-labels">
+          <span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span>
+        </div>
+
+        <!-- 마우스/터치 호버 시 동적으로 값을 띄워줄 가상 툴팁 -->
+        <div class="chart-tooltip" id="chart-tooltip-el">
+          <span class="tooltip-day">금요일</span>: <strong class="tooltip-val">₩45,000</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 최근 거래 목록 리스트 영역 -->
+    <section class="history-section">
+      <div class="section-header">
+        <h2 class="section-title">최근 거래 내역</h2>
+        <a href="#" class="btn-more-history" id="btn-more-transactions">더보기</a>
+      </div>
+
+      <div class="transaction-list">
+        <!-- 거래 1 -->
+        <div class="transaction-item" data-title="스타벅스 가산점">
+          <div class="tx-icon icon-cafe">☕</div>
+          <div class="tx-details">
+            <span class="tx-name">스타벅스 가산점</span>
+            <span class="tx-date">6월 8일 15:30</span>
+          </div>
+          <span class="tx-amount negative">-₩6,200</span>
+        </div>
+
+        <!-- 거래 2 -->
+        <div class="transaction-item" data-title="마켓컬리 결제">
+          <div class="tx-icon icon-shopping">🛒</div>
+          <div class="tx-details">
+            <span class="tx-name">마켓컬리 결제</span>
+            <span class="tx-date">6월 8일 08:15</span>
+          </div>
+          <span class="tx-amount negative">-₩34,500</span>
+        </div>
+
+        <!-- 거래 3 -->
+        <div class="transaction-item" data-title="급여 입금">
+          <div class="tx-icon icon-income">💰</div>
+          <div class="tx-details">
+            <span class="tx-name">급여 입금</span>
+            <span class="tx-date">6월 7일 10:00</span>
+          </div>
+          <span class="tx-amount positive">+₩3,200,000</span>
+        </div>
+
+        <!-- 거래 4 -->
+        <div class="transaction-item" data-title="지하철 대중교통">
+          <div class="tx-icon icon-transit">🚌</div>
+          <div class="tx-details">
+            <span class="tx-name">지하철 대중교통</span>
+            <span class="tx-date">6월 7일 08:30</span>
+          </div>
+          <span class="tx-amount negative">-₩1,400</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준) -->
+  <script src="finance-dashboard.js"></script>
+</body>
+</html>

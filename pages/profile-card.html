@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>글래스모피즘 프로필 카드</title>
+  
+  <!-- 전역 스타일 변수 및 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준) -->
+  <link rel="stylesheet" href="profile-card.css">
+</head>
+<body>
+
+  <!-- [메인 프레임 백그라운드] 모바일/태블릿 화면 전체를 아우르는 부드러운 그라데이션 구체 데코레이션 -->
+  <div class="background-decorations">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+  </div>
+
+  <!-- [카드 배치 컨테이너] 모바일 화면 내 중앙 정렬 배치를 위한 래퍼 -->
+  <main class="page-container">
+    
+    <!-- 글래스모피즘 카드 본체 -->
+    <article class="profile-card">
+      
+      <!-- 카드 상단 그라데이션 커버 이미지 영역 -->
+      <div class="card-cover"></div>
+
+      <!-- 카드 본문 내용 영역 -->
+      <div class="card-body">
+        
+        <!-- 프로필 아바타 이미지 영역 (세련된 기하학적 일러스트 SVG 내장) -->
+        <div class="profile-avatar">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- 아바타 배경용 선형 그라데이션 -->
+              <linearGradient id="avatar-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#8b5cf6" />
+                <stop offset="100%" stop-color="#ec4899" />
+              </linearGradient>
+            </defs>
+            <circle cx="50" cy="50" r="50" fill="url(#avatar-grad)"/>
+            <!-- 얼굴 실루엣 -->
+            <circle cx="50" cy="38" r="16" fill="#ffffff" fill-opacity="0.9"/>
+            <!-- 몸통 실루엣 -->
+            <path d="M18 80C18 64.5 30.5 54 50 54C69.5 54 82 64.5 82 80V84H18V80Z" fill="#ffffff" fill-opacity="0.9"/>
+          </svg>
+          <!-- 온라인 활동상태 배지 -->
+          <span class="status-indicator"></span>
+        </div>
+
+        <!-- 사용자 이름 및 직무 소개 -->
+        <h2 class="profile-name">이지아 (Jia Lee)</h2>
+        <p class="profile-title">Lead UI/UX Designer & Publisher</p>
+        
+        <!-- 간략한 자기소개 한 줄 -->
+        <p class="profile-bio">
+          글래스모피즘과 부드러운 애니메이션 효과를 활용한 모바일 우선 인터랙티브 UI 설계를 즐겨합니다.
+        </p>
+
+        <!-- 핵심 활동 통계 지표 정보 (숫자/데이터 영역) -->
+        <section class="profile-stats">
+          <div class="stat-item">
+            <span class="stat-num" id="projects-count">42</span>
+            <span class="stat-label">프로젝트</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num" id="followers-count">1,240</span>
+            <span class="stat-label">팔로워</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">380</span>
+            <span class="stat-label">팔로잉</span>
+          </div>
+        </section>
+
+        <!-- 주요 상호작용 대화형 버튼 (팔로우 및 메시지) -->
+        <div class="profile-actions">
+          <button type="button" class="btn btn-primary" id="btn-follow">
+            <span>팔로우</span>
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-message">
+            <span>메시지</span>
+          </button>
+        </div>
+
+        <!-- 소셜 네트워크 연동 버튼 그룹 -->
+        <div class="profile-socials">
+          <a href="#" class="social-link" data-platform="GitHub" title="GitHub 바로가기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="#" class="social-link" data-platform="LinkedIn" title="LinkedIn 바로가기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="social-link" data-platform="Dribbble" title="Dribbble 바로가기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.49-11.05 1-11.6 8.56"/></svg>
+          </a>
+        </div>
+
+      </div>
+
+    </article>
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="toast">
+    <span id="toast-text">메시지가 전송되었습니다.</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준) -->
+  <script src="profile-card.js"></script>
+</body>
+</html>

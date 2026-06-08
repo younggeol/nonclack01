@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대화형 태스크 매니저</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준) -->
+  <link rel="stylesheet" href="tasks-app.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 프레임 컨테이너] 모바일 화면 규격에 최적화된 앱 바디 -->
+  <main class="app-container">
+    
+    <!-- 앱 상단 타이틀 바 헤더 영역 -->
+    <header class="app-header">
+      <div class="header-main">
+        <h1>오늘의 할 일</h1>
+        <span class="date-badge" id="current-date">6월 8일 월요일</span>
+      </div>
+      <p class="header-subtitle">성공적인 하루를 위한 일상의 조각들</p>
+    </header>
+
+    <!-- 할 일 입력 폼 영역 -->
+    <form id="task-form" class="task-input-section">
+      <div class="input-wrapper">
+        <input type="text" id="task-input" placeholder="새로운 할 일을 입력해 보세요..." required autocomplete="off">
+        <button type="submit" class="btn-add" aria-label="할 일 추가">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+      </div>
+    </form>
+
+    <!-- 필터링 탭 바 영역 (전체, 진행중, 완료) -->
+    <nav class="filter-tabs" aria-label="할 일 목록 필터">
+      <button type="button" class="filter-tab active" data-filter="all">전체</button>
+      <button type="button" class="filter-tab" data-filter="active">진행 중</button>
+      <button type="button" class="filter-tab" data-filter="completed">완료됨</button>
+    </nav>
+
+    <!-- 할 일 목록 리스트 영역 -->
+    <section class="task-list-section">
+      <ul id="task-list" class="task-list">
+        <!-- 스크립트에 의해 동적으로 할 일 항목이 추가되는 공간 -->
+      </ul>
+
+      <!-- 할 일이 없을 때 표시할 미려한 빈 상태 화면 (Empty State) -->
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <p class="empty-title">할 일 목록이 비어 있습니다</p>
+        <p class="empty-desc">오늘 계획한 목표들을 적고 하나씩 실천해 보세요!</p>
+      </div>
+    </section>
+
+    <!-- 할 일 개수 요약 정보 영역 -->
+    <footer class="app-summary">
+      <span class="left-items" id="left-count">남은 할 일 0개</span>
+      <button type="button" class="btn-clear-completed" id="btn-clear">완료 항목 삭제</button>
+    </footer>
+
+  </main>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준) -->
+  <script src="tasks-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+/* ==========================================
+   [소스 코드 뷰어 스타일 - inspector.css]
+   이 파일은 모바일/태블릿 화면 위에 오버레이되는
+   소스 보기 버튼 독(Dock)과 코드 보기 Drawer창의 디자인을 관리합니다.
+   ========================================== */
+
+/* 1. 하단 플로팅 소스 컨트롤러 독 (Floating Dock) */
+.source-inspector-dock {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  z-index: 9990; /* 일반 컨텐츠 최상단 위에 노출 */
+  transition: transform var(--transition-normal), opacity var(--transition-normal);
+}
+
+/* 2. 각 소스 보기 버튼 스타일 */
+.inspector-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  color: var(--text-color);
+  background: transparent;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+/* 버튼 호버 및 액티브 효과 */
+.inspector-btn:hover {
+  background: var(--border-color);
+}
+
+.inspector-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* 각 버튼 아이콘 스타일 */
+.inspector-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* 3. 소스 보기 서랍 오버레이 (Drawer Overlay) */
+.inspector-drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+  z-index: 9995;
+}
+
+/* 활성화 시 오버레이 노출 */
+.inspector-drawer-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 4. 소스 보기 서랍 컨테이너 (Bottom Drawer) */
+.inspector-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75vh; /* 화면의 75% 높이 차지 (모바일/태블릿 화면 맞춤) */
+  background: var(--surface-color);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+  z-index: 9996;
+  overflow: hidden;
+}
+
+/* 태블릿 이상 가로폭일 때 중앙 정렬 */
+@media (min-width: 769px) {
+  .inspector-drawer {
+    max-width: var(--tablet-width);
+    left: 50%;
+    transform: translate(-50%, 100%);
+  }
+  .inspector-drawer.open {
+    transform: translate(-50%, 0);
+  }
+}
+
+.inspector-drawer.open {
+  transform: translateY(0);
+}
+
+/* 5. 서랍 헤더 영역 (Drawer Header) */
+.inspector-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* 서랍 탭 네비게이션 */
+.inspector-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.inspector-tab {
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.inspector-tab.active {
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+/* 서랍 액션 버튼 (복사 및 닫기) */
+.inspector-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inspector-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.inspector-action-btn:hover {
+  color: var(--text-color);
+  background: var(--border-color);
+}
+
+/* 복사 성공 툴팁 메시지 */
+.copy-tooltip {
+  position: absolute;
+  top: -30px;
+  right: 60px;
+  background: var(--text-color);
+  color: var(--surface-color);
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.copy-tooltip.show {
+  opacity: 1;
+}
+
+/* 6. 서랍 본문 코드 스크롤 영역 (Drawer Content) */
+.inspector-drawer-content {
+  flex: 1;
+  overflow: auto;
+  background: #0d1117; /* 어두운 코드 스키마 전용 (Github Dark와 유사) */
+  position: relative;
+}
+
+.inspector-code-panel {
+  display: none;
+  padding: 20px;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: #c9d1d9; /* 기본 텍스트 연한 회색 */
+}
+
+.inspector-code-panel.active {
+  display: block;
+}
+
+/* 7. 코드 구문 강조 스타일 (Syntax Highlighting) */
+.code-keyword { color: #ff7b72; font-weight: bold; } /* 키워드: const, function, return 등 */
+.code-string  { color: #a5d6ff; }                   /* 문자열 */
+.code-comment { color: #8b949e; font-style: italic; } /* 주석 */
+.code-number  { color: #79c0ff; }                   /* 숫자 */
+.code-tag     { color: #7ee787; }                   /* HTML 태그 */
+.code-attr    { color: #f2cc60; }                   /* HTML/CSS 속성명 */
+.code-selector{ color: #d2a8ff; font-weight: bold; } /* CSS 셀렉터 */
+.code-value   { color: #a5d6ff; }                   /* CSS 속성값 */
+.code-builtin { color: #ffa657; }                   /* JS 내장함수/객체 */

@@ -1,0 +1,141 @@
+/* ==========================================
+   [전역 스타일 및 테마 정의 - variables.css]
+   이 파일은 사이트 전반의 폰트, 색상 테마(라이트/다크), 
+   그리고 브라우저 기본 CSS 리셋 설정을 관리합니다.
+   ========================================== */
+
+/* 1. 웹 폰트 불러오기 (Google Fonts) */
+/* 본문 및 타이틀용: Plus Jakarta Sans */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+/* 소스 코드 뷰어용: Fira Code */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+
+/* 2. 전역 스타일 변수 정의 (CSS Custom Properties) */
+:root {
+  /* [폰트 패밀리 지정] */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'Fira Code', source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+
+  /* [테마 컬러 설정 - HSL 기반으로 조화로운 컬러 구성] */
+  /* 기본 브랜드 컬러: 세련된 바이올렛/인디고 계열 */
+  --primary-h: 250;
+  --primary-s: 85%;
+  --primary-l: 60%;
+  --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  --primary-hover: hsl(var(--primary-h), var(--primary-s), calc(var(--primary-l) - 8%));
+  --primary-light: hsl(var(--primary-h), var(--primary-s), 95%);
+
+  /* 보조/성공/경고 컬러 */
+  --secondary: #10b981; /* 에메랄드 그린 */
+  --danger: #ef4444;    /* 밝은 레드 */
+  --warning: #f59e0b;   /* 따뜻한 오렌지/옐로우 */
+
+  /* 라이트 테마 기본 배경 및 텍스트 색상 */
+  --bg-color: #f8fafc;        /* 매우 밝은 회색/하늘색 톤 (slate-50) */
+  --surface-color: #ffffff;   /* 흰색 카드 표면 */
+  --text-color: #0f172a;      /* 어두운 네이비색 본문 텍스트 (slate-900) */
+  --text-muted: #64748b;     /* 보조/설명용 텍스트 (slate-500) */
+  --border-color: #e2e8f0;   /* 테두리선 색상 (slate-200) */
+  
+  /* 유리 효과용 반투명 배경색 (글래스모피즘) */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(226, 232, 240, 0.6);
+  --shadow-sm: 0 2px 8px -2px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 12px 20px -8px rgba(15, 23, 42, 0.12);
+  --shadow-lg: 0 20px 25px -5px rgba(15, 23, 42, 0.15);
+
+  /* [기타 공통 설정] */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* 화면 디바이스별 최대 레이아웃 가로폭 정의 */
+  --mobile-width: 375px;
+  --tablet-width: 768px;
+}
+
+/* 3. 어두운 테마 설정 (시스템 선호 또는 클래스 추가로 분기 가능하도록 설계) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #090d16;        /* 깊은 다크 블루/블랙 */
+    --surface-color: #121824;   /* 약간 밝은 네이비 카드 표면 */
+    --text-color: #f8fafc;      /* 밝은 회색 텍스트 */
+    --text-muted: #94a3b8;     /* 어두운 회색 텍스트 (slate-400) */
+    --border-color: #1e293b;   /* 어두운 테두리선 (slate-800) */
+    
+    --glass-bg: rgba(18, 24, 36, 0.8);
+    --glass-border: rgba(30, 41, 59, 0.5);
+    
+    --primary-light: hsl(var(--primary-h), var(--primary-s), 15%);
+    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 12px 20px -8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* 4. 브라우저 기본 스타일 초기화 (Reset CSS) */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 이미지 및 멀티미디어 요소 리셋 */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* 폼 관련 요소 기본 초기화 */
+input, button, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* 링크 기본 선 스타일 제거 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 스크롤바 커스텀 스타일 (세련된 스키니 스타일) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
