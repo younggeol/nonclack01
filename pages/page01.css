@@ -65,7 +65,7 @@ body {
   opacity: 0.7;
 }
 
-.btn-back svg {
+.btn-back img {
   width: 20px;
   height: 20px;
 }
@@ -274,7 +274,7 @@ body {
   justify-content: center;
 }
 
-.search-svg-icon {
+.search-img-icon {
   width: 20px;
   height: 20px;
 }
@@ -574,9 +574,9 @@ body {
   #customer-name-input {
     color: #f8fafc;
   }
-  .search-svg-icon circle,
-  .search-svg-icon line {
-    stroke: #f8fafc;
+  .btn-back img,
+  .btn-search-icon img {
+    filter: invert(1);
   }
   .simple-guide-box {
     background: #1e293b;

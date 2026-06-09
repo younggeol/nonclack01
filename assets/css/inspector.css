@@ -268,13 +268,18 @@
 .btn-inspect {
   background: var(--surface-color);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-size: 9px;
+  border-radius: 6px;
+  width: 100px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
   font-weight: 700;
   color: var(--text-muted);
   cursor: pointer;
   transition: all var(--transition-fast);
+  box-sizing: border-box;
 }
 
 .btn-inspect:hover {
@@ -293,6 +298,150 @@
     background: #0f172a;
     border-color: #334155;
     color: #94a3b8;
+  }
+}
+
+
+/* ==========================================
+   [신규 기능] 인라인 아코디언 소스 뷰어 스타일
+   ========================================== */
+.inline-code-panel {
+  width: 100%;
+  background: #0d1117;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: slide-down-fade 0.25s ease-out;
+  text-align: left;
+}
+
+@keyframes slide-down-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.inline-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: #161b22;
+  border-bottom: 1px solid #21262d;
+}
+
+.inline-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.inline-tab {
+  padding: 4px 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #8b949e;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.inline-tab:hover {
+  color: #c9d1d9;
+  background: #21262d;
+}
+
+.inline-tab.active {
+  color: var(--primary);
+  background: var(--primary-light);
+  border-color: rgba(239, 59, 36, 0.2);
+}
+
+.inline-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+
+.inline-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  color: #8b949e;
+  background: transparent;
+  border: 1px solid #30363d;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.inline-action-btn:hover {
+  color: #c9d1d9;
+  background: #30363d;
+  border-color: #8b949e;
+}
+
+.inline-action-btn .action-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.inline-copy-tooltip {
+  position: absolute;
+  top: -28px;
+  right: 40px;
+  background: #c9d1d9;
+  color: #0d1117;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+  font-weight: bold;
+}
+
+.inline-copy-tooltip.show {
+  opacity: 1;
+}
+
+.inline-panel-body {
+  padding: 14px 16px;
+  overflow-x: auto;
+}
+
+.inline-code-content {
+  margin: 0;
+  white-space: pre;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: #c9d1d9;
+}
+
+/* 툴바 내부의 버튼이 활성화(active) 되었을 때의 보정 스타일 */
+.btn-inspect.active {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  background: var(--primary-light) !important;
+}
+
+/* 다크테마용 인라인 아코디언 추가 정의 */
+@media (prefers-color-scheme: dark) {
+  .inline-code-panel {
+    border-color: rgba(255, 255, 255, 0.1);
   }
 }
 

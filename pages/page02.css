@@ -64,7 +64,7 @@ body {
   opacity: 0.7;
 }
 
-.btn-back svg {
+.btn-back img {
   width: 20px;
   height: 20px;
 }
@@ -471,6 +471,9 @@ body {
   .btn-back,
   .header-title {
     color: #f8fafc;
+  }
+  .btn-back img {
+    filter: invert(1);
   }
   .analysis-container {
     background: #1e293b;
