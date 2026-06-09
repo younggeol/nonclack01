@@ -1,0 +1,286 @@
+/* START: SECTION_1 */
+/* ==========================================
+   [세부 보장 내역 카드 스타일 - page07.css]
+   이 파일은 보장 정보 리스트, 가격 및 보험료 수치 정렬,
+   구분선 및 다크모드 설정을 관리합니다.
+   ========================================== */
+
+/* Pretendard 폰트 임포트 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+body {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* 모바일 화면 래퍼 (반응형 전환) */
+.app-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 모바일 앱 화면 헤더 */
+.app-header {
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.header-bar {
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+.btn-back:hover {
+  background: var(--border-color);
+}
+
+.btn-back img {
+  width: 24px;
+  height: 24px;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.header-empty {
+  width: 40px;
+}
+
+/* 스크롤 가능한 본문 영역 */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+/* 1. 세부 보장 내역 컨테이너 */
+.coverage-detail-container {
+  width: 100%;
+  background: #ffffff;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* 2. 카테고리 제목 */
+.coverage-category-title {
+  align-self: stretch;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20.72px;
+  word-wrap: break-word;
+  margin: 0;
+}
+
+/* 3. 보장 내역 카드 본체 */
+.coverage-card {
+  align-self: stretch;
+  padding: 16px;
+  border-radius: 12px;
+  outline: 1px #E8EAF3 solid;
+  outline-offset: -1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+/* 4. 보장 내역 아이템 */
+.coverage-item {
+  align-self: stretch;
+  background: transparent;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px;
+  margin: -8px; /* 패딩 확장분 상쇄 */
+  border-radius: 8px;
+  outline: none;
+  transition: background var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.coverage-item:hover,
+.coverage-item:focus {
+  background: #f8fafc;
+}
+
+.coverage-item-title-box {
+  flex: 1 1 0;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.coverage-item-title {
+  align-self: stretch;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  word-wrap: break-word;
+}
+
+/* 5. 금액 및 가격 리스트 */
+.coverage-item-values {
+  width: 100px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+/* 보장 금액 */
+.coverage-item-amount {
+  align-self: stretch;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.amount-number {
+  flex: 1 1 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #EF3B24;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20.72px;
+  word-wrap: break-word;
+}
+
+.amount-unit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #EF3B24;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20.72px;
+  word-wrap: break-word;
+}
+
+/* 보험료 */
+.coverage-item-premium {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+.premium-label, 
+.premium-number, 
+.premium-unit {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 17.76px;
+  word-wrap: break-word;
+}
+
+/* 6. 아이템 구분선 */
+.coverage-divider {
+  align-self: stretch;
+  height: 1px;
+  background: #EEEFF2;
+  margin: 4px 0;
+}
+
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .btn-back img {
+    filter: invert(1);
+  }
+  
+  .coverage-detail-container {
+    background: #1e293b;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .coverage-category-title {
+    color: #f8fafc;
+  }
+  
+  .coverage-card {
+    background: #121824;
+    outline-color: #334155;
+  }
+  
+  .coverage-item:hover,
+  .coverage-item:focus {
+    background: #1e293b;
+  }
+  
+  .coverage-item-title {
+    color: #f8fafc;
+  }
+  
+  .premium-label, 
+  .premium-number, 
+  .premium-unit {
+    color: #94a3b8;
+  }
+  
+  .coverage-divider {
+    background: #334155;
+  }
+}
+/* END: SECTION_1 */

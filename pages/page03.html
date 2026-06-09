@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>보장분석 반영 설정</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
+  <link rel="stylesheet" href="page03.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 -->
+  <main class="app-wrapper">
+    
+    <!-- 모바일 앱 화면 헤더 영역 -->
+    <header class="app-header">
+      <div class="header-bar">
+        <button type="button" class="btn-back" aria-label="이전 페이지">
+          <img src="../assets/images/btn_back.svg" alt="이전 페이지">
+        </button>
+        <span class="header-title">설정</span>
+        <div class="header-empty"></div>
+      </div>
+    </header>
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 구역 1: 보장분석 반영 체크 섹션 -->
+      <section class="info-card-section relative-section">
+        
+        <!-- START: SECTION_1 -->
+        <div class="reflection-setting-container">
+          <!-- 대화형 체크 요소 -->
+          <div class="custom-checkbox-group" id="btn-toggle-reflection">
+            <!-- 체크 상태에 따라 data-property-1="active" / "default" 토글 -->
+            <div class="check-icon-box" data-property-1="default">
+              <div class="check-bg-circle"></div>
+              <div class="check-mark-inner"></div>
+            </div>
+            <div class="check-label-text">보장분석 반영</div>
+          </div>
+        </div>
+        <!-- END: SECTION_1 -->
+
+        <!-- 구역 1 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">설정카드 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 구역 2: 판매인기/신담보 설정 섹션 -->
+      <section class="info-card-section relative-section">
+
+        <!-- START: SECTION_2 -->
+        <div class="menu-setting-card" id="btn-toggle-popularity" data-property-1="off">
+          <div class="menu-setting-inner">
+            <!-- 좌측 레이블 영역 -->
+            <div class="menu-label-group">
+              <span class="menu-label-text">판매인기/신담보</span>
+            </div>
+            <!-- 우측 회전형 화살표 아이콘 영역 -->
+            <div class="menu-arrow-box">
+              <img src="../assets/images/icons/chevron_down.png" class="menu-arrow-icon" alt="화살표 아이콘">
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_2 -->
+
+        <!-- 구역 2 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">메뉴카드 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 구역 3: 3대 진단 설정 섹션 -->
+      <section class="info-card-section relative-section">
+
+        <!-- START: SECTION_3 -->
+        <div class="menu-setting-card" id="btn-toggle-diagnosis" data-property-1="on">
+          <!-- 카드 상단 헤더 영역 (클릭 대상) -->
+          <div class="menu-setting-inner">
+            <div class="menu-label-group">
+              <span class="menu-label-text">3대 진단</span>
+            </div>
+            <!-- 우측 회전형 화살표 아이콘 영역 (초기 90도 회전 상태) -->
+            <div class="menu-arrow-box diag-arrow">
+              <img src="../assets/images/icons/chevron_down.png" class="menu-arrow-icon" alt="화살표 아이콘">
+            </div>
+          </div>
+          <!-- 카드 하단 서브 옵션/뱃지 영역 (접고 펴지는 아코디언 패널) -->
+          <div class="menu-sub-badge-row">
+            <div class="sub-badge-list">
+              <div class="sub-badge red-badge" data-color="red" data-type="sub">
+                <span class="badge-text">암진단비</span>
+              </div>
+              <div class="sub-badge red-badge" data-color="red" data-type="sub">
+                <span class="badge-text">고액항암치료비</span>
+              </div>
+              <div class="sub-badge red-badge" data-color="red" data-type="sub">
+                <span class="badge-text">2대 주요치료비</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_3 -->
+
+        <!-- 구역 3 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">진단카드 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 구역 4: 유의사항 (아코디언 폴딩) 섹션 -->
+      <section class="info-card-section relative-section">
+
+        <!-- START: SECTION_4 -->
+        <div class="notice-accordion-card" id="notice-accordion" data-property-1="on">
+          <!-- 아코디언 헤더 (클릭하여 접고 펴기) -->
+          <div class="notice-header-bar">
+            <span class="notice-title">유의사항</span>
+            <div class="menu-arrow-box notice-arrow">
+              <img src="../assets/images/icons/chevron_down.png" class="menu-arrow-icon" alt="화살표 아이콘">
+            </div>
+          </div>
+          
+          <!-- 아코디언 바디 (접히는 영역) -->
+          <div class="notice-body-wrapper">
+            <div class="notice-divider"></div>
+            <ul class="notice-list">
+              <li class="notice-bullet-item">
+                <span class="notice-bullet-dot"></span>
+                <span class="notice-bullet-text">판매인기/신담보 선택시 다른 테마보다 최우선 추천됩니다.</span>
+              </li>
+              <li class="notice-bullet-item">
+                <span class="notice-bullet-dot"></span>
+                <span class="notice-bullet-text">희망보험료는 단순 참고용입니다. 고객님의 성별, 연령, 직업, 선택한 테마종류에 따라 AI설계결과 제공시 오차범위 있을 수 있습니다.</span>
+              </li>
+              <li class="notice-bullet-item">
+                <span class="notice-bullet-dot"></span>
+                <span class="notice-bullet-text">운전자, 치마, 치매는 단독상품으로 추천됩니다.</span>
+              </li>
+              <li class="notice-bullet-item">
+                <span class="notice-bullet-dot"></span>
+                <span class="notice-bullet-text">선택한 테마갯수가 적을수록 추천 정확도는 높아집니다.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- END: SECTION_4 -->
+
+        <!-- 구역 4 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">유의사항 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_4" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- 구역 5: 하단 고정 액션 바 -->
+    <footer class="app-footer-bar relative-section" data-type="2">
+      
+      <!-- START: SECTION_5 -->
+      <div class="bottom-action-buttons">
+        <button type="button" class="btn-action-outline reset-btn" data-property-1="secondary" id="btn-reset-settings">
+          <span>초기화</span>
+        </button>
+        <button type="button" class="btn-action-primary confirm-btn" data-property-1="primary" id="btn-confirm-settings">
+          <span>AI설계결과 확인</span>
+        </button>
+      </div>
+      <!-- END: SECTION_5 -->
+
+      <!-- 구역 5 소스보기 배지 그룹 (100% 너비 툴바) -->
+      <div class="section-code-badge bottom-badge">
+        <span class="badge-label">버튼바 소스:</span>
+        <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="html">HTML</button>
+        <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="css">CSS</button>
+        <button type="button" class="btn-inspect" data-section="SECTION_5" data-type="js">JS</button>
+      </div>
+
+    </footer>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
+  <script src="page03.js"></script>
+</body>
+</html>

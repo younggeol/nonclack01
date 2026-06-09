@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>보장 상세 내역</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 -->
+  <link rel="stylesheet" href="page07.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 (반응형 전환) -->
+  <main class="app-wrapper">
+    
+    <!-- 모바일 앱 화면 헤더 영역 -->
+    <header class="app-header">
+      <div class="header-bar">
+        <button type="button" class="btn-back" aria-label="이전 페이지">
+          <img src="../assets/images/btn_back.svg" alt="이전 페이지">
+        </button>
+        <span class="header-title">보장 상세 내역</span>
+        <div class="header-empty"></div>
+      </div>
+    </header>
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 구역 1: 보장 상세 내역 카드 섹션 -->
+      <section class="coverage-section relative-section">
+        
+        <!-- START: SECTION_1 -->
+        <div class="coverage-detail-container">
+          
+          <!-- 카테고리 제목 -->
+          <h2 class="coverage-category-title">사망/후유</h2>
+          
+          <!-- 상세 내용 카드 본체 -->
+          <div class="coverage-card">
+            
+            <!-- 보장 내역 1: 일반상해사망 -->
+            <div class="coverage-item" tabindex="0">
+              <div class="coverage-item-title-box">
+                <span class="coverage-item-title">일반상해사망[기본계약]</span>
+              </div>
+              <div class="coverage-item-values">
+                <!-- 보장 금액 -->
+                <div class="coverage-item-amount">
+                  <span class="amount-number">100</span>
+                  <span class="amount-unit">만원</span>
+                </div>
+                <!-- 세부 보험료 -->
+                <div class="coverage-item-premium">
+                  <span class="premium-label">보험료</span>
+                  <span class="premium-number">100,000</span>
+                  <span class="premium-unit">원</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 구분선 (Compact On, Inset) -->
+            <div class="coverage-divider" data-compact="On" data-type="Inset"></div>
+            
+            <!-- 보장 내역 2: 일반상해후유장해 -->
+            <div class="coverage-item" tabindex="0">
+              <div class="coverage-item-title-box">
+                <span class="coverage-item-title">일반상해후유장해(3-100%)</span>
+              </div>
+              <div class="coverage-item-values">
+                <!-- 보장 금액 -->
+                <div class="coverage-item-amount">
+                  <span class="amount-number">10,000</span>
+                  <span class="amount-unit">만원</span>
+                </div>
+                <!-- 세부 보험료 -->
+                <div class="coverage-item-premium">
+                  <span class="premium-label">보험료</span>
+                  <span class="premium-number">100,000</span>
+                  <span class="premium-unit">원</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+        <!-- END: SECTION_1 -->
+
+        <!-- 구역 1 소스보기 배지 그룹 -->
+        <div class="section-code-badge">
+          <span class="badge-label">상세 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 -->
+  <script src="page07.js"></script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+/* START: SECTION_1 */
+/* ==========================================
+   [추천 보험 플랜 조회 스타일 - page05.css]
+   이 파일은 아코디언 컴포넌트, 상세 상품 카드 레이아웃,
+   그리고 다크모드 스타일을 관리합니다.
+   ========================================== */
+
+/* Pretendard 폰트 임포트 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+body {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* 모바일 화면 래퍼 (반응형 전환) */
+.app-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  background: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 모바일 앱 화면 헤더 */
+.app-header {
+  background: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+  flex-shrink: 0;
+}
+
+.header-bar {
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+.btn-back:hover {
+  background: var(--border-color);
+}
+
+.btn-back img {
+  width: 24px;
+  height: 24px;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.header-empty {
+  width: 40px;
+}
+
+/* 스크롤 가능한 본문 영역 */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  box-sizing: border-box;
+}
+
+/* 아코디언 레이아웃 */
+.plan-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-header {
+  width: 100%;
+  align-self: stretch;
+  padding: 16px 0;
+  border-bottom: 1px solid #EEEFF2;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background: transparent;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  text-align: left;
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: opacity var(--transition-fast);
+}
+
+.plan-header:hover {
+  opacity: 0.8;
+}
+
+.plan-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26.64px;
+  color: #222222;
+}
+
+.plan-arrow-box {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-arrow-icon {
+  width: 16px;
+  height: 9px;
+  left: 4px;
+  top: 7px;
+  position: absolute;
+  background: #4A4C50;
+  -webkit-mask: url('../assets/images/icons/chevron_down.png') no-repeat center;
+  mask: url('../assets/images/icons/chevron_down.png') no-repeat center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: transform var(--transition-normal) ease;
+}
+
+/* 아코디언 토글 애니메이션 구조 */
+.plan-body-wrapper {
+  width: 100%;
+  overflow: hidden;
+  max-height: 2000px; /* 확장용 임시 값 */
+  opacity: 1;
+  transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  margin-top: 12px;
+}
+
+/* 아코디언 닫힘 상태 */
+.plan-accordion[data-state="off"] .plan-body-wrapper {
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  pointer-events: none;
+}
+
+.plan-accordion[data-state="on"] .plan-arrow-icon {
+  transform: rotate(-180deg);
+}
+
+/* 상품 카드 공통 디자인 */
+.product-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.product-card {
+  width: 100%;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+  transition: outline var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.product-card[data-state="on"] {
+  outline: 1px #EF3B24 solid;
+  outline-offset: -1px;
+}
+
+.product-card[data-state="off"] {
+  outline: 1px #DEDEDE solid;
+  outline-offset: -1px;
+}
+
+/* 상품 상부 */
+.product-top {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badge-main {
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+.badge-main[data-color="pink"] {
+  background: #FBE9EE;
+  color: #BB4885;
+}
+
+.product-name {
+  align-self: stretch;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+/* 상품 디테일 */
+.product-details {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-summary {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.detail-summary span {
+  color: #222222;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.divider-line {
+  width: 1px;
+  height: 12px;
+  background: #CCCCCC;
+}
+
+/* 서브 뱃지 라벨 */
+.badge-sub-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-sub {
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+  outline-offset: -1px;
+}
+
+.badge-sub[data-color="green"] {
+  outline: 1px #C7E9D5 solid;
+  color: #4E9586;
+}
+
+.badge-sub[data-color="purple"] {
+  outline: 1px #EDD7FE solid;
+  color: #7D4B9A;
+}
+
+.badge-sub[data-color="yellow"] {
+  outline: 1px #FCEBC6 solid;
+  color: #CE9A26;
+}
+
+/* 상품 하부 */
+.product-bottom {
+  align-self: stretch;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.product-bottom.justify-end {
+  justify-content: flex-end;
+}
+
+.btn-change-expiry {
+  height: 24px;
+  padding: 4px 12px;
+  background: #EEEEEE;
+  border-radius: 14px;
+  color: #222222;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+}
+
+.btn-change-expiry:hover {
+  background: #e2e2e2;
+}
+
+.product-price {
+  flex: 1;
+  text-align: right;
+  color: #EF3B24;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+}
+
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .btn-back img {
+    filter: invert(1);
+  }
+  
+  .plan-header {
+    border-color: #334155;
+  }
+  
+  .plan-title {
+    color: #f8fafc;
+  }
+  
+  .plan-arrow-icon {
+    background: #94a3b8;
+  }
+  
+  .product-card {
+    background: #1e293b;
+  }
+  
+  .product-card[data-state="off"] {
+    outline-color: #334155;
+  }
+  
+  .product-name {
+    color: #f8fafc;
+  }
+  
+  .detail-summary span {
+    color: #94a3b8;
+  }
+  
+  .divider-line {
+    background: #475569;
+  }
+  
+  .btn-change-expiry {
+    background: #334155;
+    color: #f8fafc;
+  }
+  
+  .btn-change-expiry:hover {
+    background: #475569;
+  }
+  
+  /* 다크모드 뱃지 보완 */
+  .badge-main[data-color="pink"] {
+    background: #501d33;
+    color: #f472b6;
+  }
+  
+  .badge-sub[data-color="green"] {
+    outline-color: #065f46;
+    color: #34d399;
+  }
+  
+  .badge-sub[data-color="purple"] {
+    outline-color: #5b21b6;
+    color: #c084fc;
+  }
+  
+  .badge-sub[data-color="yellow"] {
+    outline-color: #78350f;
+    color: #fbbf24;
+  }
+}
+/* END: SECTION_1 */

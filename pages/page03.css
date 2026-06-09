@@ -1,0 +1,603 @@
+/* ==========================================
+   [보장분석 반영 설정 스타일 - page03.css]
+   이 파일은 설정 페이지의 레이아웃, 체크박스 스타일,
+   폰트 및 전역 테마 속성 분리를 관리합니다.
+   ========================================== */
+
+/* 1. 외부 Pretendard 폰트 임포트 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+/* 2. 전역 배치 및 바디 서식 */
+body {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* 모바일 화면 래퍼 */
+.app-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  background: #F5F7F8; /* 밝은 앱 배경색 */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 상단 헤더 바 */
+.app-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 16px;
+}
+
+.btn-back {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222222;
+  transition: opacity var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-back:hover {
+  opacity: 0.7;
+}
+
+.btn-back img {
+  width: 20px;
+  height: 20px;
+}
+
+.header-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.header-empty {
+  width: 36px;
+}
+
+/* 스크롤 가능한 본문 영역 */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 본문 카드 섹션 패딩 */
+.info-card-section {
+  padding: 24px 20px 16px 20px;
+}
+
+
+/* START: SECTION_1 */
+/* ==========================================
+   [구역 1] 보장분석 반영 설정 박스 스타일
+   ========================================== */
+.reflection-setting-container {
+  width: 100%;
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.04);
+}
+
+/* 대화형 체크박스 가로 행 정렬 */
+.custom-checkbox-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* 체크 아이콘 감싸개 */
+.check-icon-box {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+/* 체크 배경 원형 구조 */
+.check-bg-circle {
+  width: 20px;
+  height: 20px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: white;
+  border-radius: 9999px;
+  border: 1px #D5D8DC solid;
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+/* 체크 모양 내부 지시자 */
+.check-mark-inner {
+  width: 8.33px;
+  height: 5.56px;
+  left: 5.83px;
+  top: 7.78px;
+  position: absolute;
+  background: #D5D8DC; /* 비활성 시 연회색 */
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+  clip-path: polygon(14% 44%, 0 58%, 38% 100%, 100% 16%, 83% 0, 38% 68%); /* CSS 폴리곤 체크 아이콘 */
+}
+
+/* 체크박스 활성화(Active) 상태 비주얼 정의 */
+.check-icon-box[data-property-1="active"] .check-bg-circle {
+  border-color: #EF3B24;
+}
+
+.check-icon-box[data-property-1="active"] .check-mark-inner {
+  background: #EF3B24; /* 활성 브랜드 컬러 주황/빨강 적용 */
+}
+
+/* 설정 텍스트 레이블 정의 */
+.check-label-text {
+  color: #222222;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 17px;
+  word-wrap: break-word;
+  transition: color var(--transition-fast);
+}
+
+/* 활성화 시 레이블 볼드 피드백 */
+.custom-checkbox-group.checked .check-label-text {
+  color: #000000;
+  font-weight: 700;
+}
+/* END: SECTION_1 */
+
+
+/* START: SECTION_2 */
+/* ==========================================
+   [구역 2] 판매인기/신담보 토글 카드 스타일
+   ========================================== */
+.menu-setting-card {
+  width: 100%;
+  background: var(--background-primary, white);
+  overflow: hidden;
+  border-radius: 12px;
+  outline: 1px var(--border-ghost-default, #EEEFF2) solid;
+  outline-offset: -1px;
+  box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.04);
+  transition: all var(--transition-fast);
+}
+
+.menu-setting-inner {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.menu-label-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-label-text {
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20.72px;
+  word-wrap: break-word;
+}
+
+/* 우측 화살표 박스 (20x20 크기) */
+.menu-arrow-box {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-normal);
+  transform-origin: center center;
+}
+
+
+
+/* data-property-1="on" 일 때 0도 회전 상태 */
+.menu-setting-card[data-property-1="on"] .menu-arrow-box {
+  transform: rotate(0deg);
+}
+
+/* 꺾쇠 화살표 아이콘 */
+.menu-arrow-icon {
+  width: 12px;
+  height: 12px;
+  left: 4px;
+  top: 4px;
+  position: absolute;
+  object-fit: contain;
+  transition: filter var(--transition-fast);
+}
+
+/* 활성화(on) 상태 카드 비주얼 강화 */
+.menu-setting-card[data-property-1="on"] {
+  outline-color: var(--primary);
+  box-shadow: 0 4px 14px rgba(239, 59, 36, 0.1);
+}
+
+.menu-setting-card[data-property-1="on"] .menu-arrow-icon {
+  filter: invert(36%) sepia(81%) saturate(5451%) hue-rotate(348deg) brightness(96%) contrast(96%); /* 브랜드 주황/빨강 필터 */
+}
+/* END: SECTION_2 */
+
+
+/* 4. 유틸리티 및 알림 레이아웃 */
+.toast-message {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222222;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-message.show {
+  bottom: 40px;
+}
+
+
+/* START: SECTION_3 */
+/* ==========================================
+   [구역 3] 3대 진단 토글 카드 및 서브 뱃지 스타일
+   ========================================== */
+/* 구역 3 전용 화살표 각도 스위칭 */
+.menu-arrow-box.diag-arrow {
+  transform-origin: center center;
+}
+
+
+
+/* data-property-1="on" 일 때 0도 회전 상태 */
+.menu-setting-card[id="btn-toggle-diagnosis"][data-property-1="on"] .menu-arrow-box.diag-arrow {
+  transform: rotate(0deg);
+}
+
+/* 서브 뱃지 노출 영역 컨테이너 (아코디언 효과) */
+.menu-sub-badge-row {
+  width: 100%;
+  overflow: hidden;
+  max-height: 100px; /* 열려 있을 때의 최대 높이 */
+  transition: max-height var(--transition-normal), opacity var(--transition-normal), padding var(--transition-normal);
+  opacity: 1;
+  box-sizing: border-box;
+}
+
+.sub-badge-list {
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* 비활성화(off) 시 하단 패널 숨김 처리 */
+.menu-setting-card[id="btn-toggle-diagnosis"][data-property-1="off"] .menu-sub-badge-row {
+  max-height: 0px;
+  opacity: 0;
+}
+
+/* 서브 뱃지 공통 스타일 */
+.sub-badge {
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.sub-badge .badge-text {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 14px;
+}
+
+/* 빨간색 서브 뱃지 정의 */
+.sub-badge.red-badge {
+  background: #FAEBE6;
+}
+.sub-badge.red-badge .badge-text {
+  color: #EF3B24;
+}
+/* END: SECTION_3 */
+
+
+/* START: SECTION_4 */
+/* ==========================================
+   [구역 4] 유의사항 아코디언 카드 스타일
+   ========================================== */
+.notice-accordion-card {
+  width: 100%;
+  background: var(--background-primary, white);
+  border-radius: 12px;
+  outline: 1px var(--border-ghost-default, #EEEFF2) solid;
+  outline-offset: -1px;
+  box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.04);
+  padding: 32px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all var(--transition-fast);
+}
+
+.notice-header-bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.notice-title {
+  color: #222222;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+/* 유의사항 화살표 회전 처리 */
+.menu-arrow-box.notice-arrow {
+  transition: transform var(--transition-normal);
+  transform-origin: center center;
+}
+
+/* data-property-1="off" (접힘) 일 때: 화살표는 회전 없음 (0deg, 기본 아래 방향) */
+.notice-accordion-card[data-property-1="off"] .menu-arrow-box.notice-arrow {
+  transform: rotate(0deg);
+}
+
+/* data-property-1="on" (열림) 일 때: 화살표는 위를 향하도록 180도 회전 */
+.notice-accordion-card[data-property-1="on"] .menu-arrow-box.notice-arrow {
+  transform: rotate(-180deg);
+}
+
+.notice-body-wrapper {
+  width: 100%;
+  overflow: hidden;
+  max-height: 500px; /* 열려 있을 때 충분한 최대 높이 */
+  opacity: 1;
+  transition: max-height var(--transition-normal), opacity var(--transition-normal);
+}
+
+/* 접혔을 때 바디 숨김 처리 */
+.notice-accordion-card[data-property-1="off"] .notice-body-wrapper {
+  max-height: 0px;
+  opacity: 0;
+}
+
+.notice-divider {
+  width: 100%;
+  height: 1px;
+  background: #EEEEEE;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.notice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.notice-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.notice-bullet-dot {
+  width: 2px;
+  height: 2px;
+  background: #222222;
+  margin-top: 8px; /* 텍스트 vertical-align 매핑 */
+  flex-shrink: 0;
+}
+
+.notice-bullet-text {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  word-wrap: break-word;
+}
+/* END: SECTION_4 */
+
+
+/* START: SECTION_5 */
+/* ==========================================
+   [구역 5] 하단 고정 버튼 영역 스타일
+   ========================================== */
+.app-footer-bar {
+  background: #ffffff;
+  padding: 19px 24px;
+  box-shadow: 0px -4px 10px rgba(34, 34, 34, 0.08);
+  z-index: 10;
+  border-top: 1px solid var(--border-color);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bottom-action-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 액션 버튼 공통 */
+.btn-action-outline,
+.btn-action-primary {
+  height: 52px;
+  border-radius: 50px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Pretendard, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-sizing: border-box;
+}
+
+/* Secondary (초기화) 버튼 - 100px 고정 가로폭 */
+.btn-action-outline {
+  width: 100px;
+  background: #ffffff;
+  color: #222222;
+  border: 2px solid #222222;
+  flex-shrink: 0;
+}
+
+.btn-action-outline:hover {
+  background: #f8fafc;
+}
+
+/* Primary (AI설계결과 확인) 버튼 - 가변 가로폭 */
+.btn-action-primary {
+  flex: 1;
+  background: #EF3B24;
+  color: #ffffff;
+  border: none;
+}
+
+.btn-action-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+/* END: SECTION_5 */
+
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .app-wrapper,
+  .app-header {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .app-content {
+    background: #0f172a;
+  }
+  .btn-back,
+  .header-title {
+    color: #f8fafc;
+  }
+  .btn-back img {
+    filter: invert(1);
+  }
+  .reflection-setting-container {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .check-label-text {
+    color: #f8fafc;
+  }
+  .custom-checkbox-group.checked .check-label-text {
+    color: #ffffff;
+  }
+  .check-bg-circle {
+    background: #0f172a;
+    border-color: #475569;
+  }
+  .check-mark-inner {
+    background: #475569;
+  }
+  .menu-setting-card {
+    background: #1e293b;
+    outline-color: #334155;
+  }
+  .menu-label-text {
+    color: #f8fafc;
+  }
+  .menu-arrow-icon {
+    filter: invert(1);
+  }
+  .menu-setting-card[data-property-1="on"] .menu-arrow-icon {
+    filter: invert(56%) sepia(61%) saturate(3000%) hue-rotate(330deg) brightness(100%) contrast(105%); /* 다크모드 대응 연한 주황/빨강 */
+  }
+  .sub-badge.red-badge {
+    background: #4c1d1a;
+  }
+  .sub-badge.red-badge .badge-text {
+    color: #fca5a5;
+  }
+
+  /* START: SECTION_4 */
+  .notice-accordion-card {
+    background: #1e293b;
+    outline-color: #334155;
+  }
+  .notice-title {
+    color: #f8fafc;
+  }
+  .notice-divider {
+    background: #334155;
+  }
+  .notice-bullet-dot {
+    background: #94a3b8;
+  }
+  .notice-bullet-text {
+    color: #94a3b8;
+  }
+  /* END: SECTION_4 */
+
+  /* START: SECTION_5 */
+  .app-footer-bar {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .btn-action-outline {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: #f8fafc;
+  }
+  .btn-action-outline:hover {
+    background: #334155;
+  }
+  /* END: SECTION_5 */
+}

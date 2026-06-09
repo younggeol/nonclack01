@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>희망보험료 상세 설정</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
+  <link rel="stylesheet" href="page04.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 (반응형 전환) -->
+  <main class="app-wrapper">
+    
+    <!-- 모달 배경 딤(Dim) 처리용 레이어 -->
+    <div class="popup-dim-overlay"></div>
+
+    <!-- 바텀 시트/팝업 본체 -->
+    <!-- START: SECTION_1 -->
+    <div class="popup-sheet-container">
+      
+      <!-- 1. 팝업 헤더 영역 -->
+      <header class="popup-header">
+        <div class="popup-header-content">
+          <h2 class="popup-title">희망보험료</h2>
+          <button type="button" class="btn-close-popup" aria-label="닫기">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- 2. 팝업 본문 영역 (라디오 버튼 목록) -->
+      <div class="popup-content">
+        
+        <ul class="option-list">
+          <!-- 옵션 1: 5만원이하 (미선택) -->
+          <li class="option-item">
+            <div class="popup-radio" data-property-1="default">
+              <div class="radio-circle"></div>
+              <div class="radio-dot"></div>
+            </div>
+            <span class="option-label">5만원이하</span>
+          </li>
+          
+          <!-- 옵션 2: 5~10만원 (미선택) -->
+          <li class="option-item">
+            <div class="popup-radio" data-property-1="default">
+              <div class="radio-circle"></div>
+              <div class="radio-dot"></div>
+            </div>
+            <span class="option-label">5~10만원</span>
+          </li>
+          
+          <!-- 옵션 3: 10~15만원 (선택됨) -->
+          <li class="option-item">
+            <div class="popup-radio" data-property-1="selected">
+              <div class="radio-circle"></div>
+              <div class="radio-dot"></div>
+            </div>
+            <span class="option-label">10~15만원</span>
+          </li>
+          
+          <!-- 옵션 4: 15~20만원 (미선택) -->
+          <li class="option-item">
+            <div class="popup-radio" data-property-1="default">
+              <div class="radio-circle"></div>
+              <div class="radio-dot"></div>
+            </div>
+            <span class="option-label">15~20만원</span>
+          </li>
+          
+          <!-- 옵션 5: 20만원초과 (미선택) -->
+          <li class="option-item">
+            <div class="popup-radio" data-property-1="default">
+              <div class="radio-circle"></div>
+              <div class="radio-dot"></div>
+            </div>
+            <span class="option-label">20만원초과</span>
+          </li>
+        </ul>
+
+
+      </div>
+
+      <!-- 3. 팝업 하단 고정 버튼 바 -->
+      <footer class="popup-footer" data-type="1">
+        <button type="button" class="btn-action-primary confirm-btn" data-property-1="primary" id="btn-select-confirm">
+          <span>희망보험료 선택</span>
+        </button>
+      </footer>
+
+      <!-- 4. iOS 홈 인디케이터 바 -->
+      <div class="ios-home-indicator-bar" data-bg="false" data-os="iOS">
+        <div class="ios-indicator-line"></div>
+      </div>
+
+    </div>
+    <!-- END: SECTION_1 -->
+
+    <!-- 구역 1 소스보기 배지 그룹 (100% 너비 툴바) -->
+    <div class="section-code-badge bottom-badge">
+      <span class="badge-label">팝업 소스:</span>
+      <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+      <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+      <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+    </div>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
+  <script src="page04.js"></script>
+</body>
+</html>

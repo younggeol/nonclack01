@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>추천 보험 플랜 조회</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 -->
+  <link rel="stylesheet" href="page05.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 (반응형 전환) -->
+  <main class="app-wrapper">
+    
+    <!-- 모바일 앱 화면 헤더 영역 -->
+    <header class="app-header">
+      <div class="header-bar">
+        <button type="button" class="btn-back" aria-label="이전 페이지">
+          <img src="../assets/images/btn_back.svg" alt="이전 페이지">
+        </button>
+        <span class="header-title">추천 플랜</span>
+        <div class="header-empty"></div>
+      </div>
+    </header>
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 구역 1: 충분한 보장을 위한 플랜 섹션 -->
+      <section class="plan-section relative-section">
+        
+        <!-- START: SECTION_1 -->
+        <div class="plan-accordion" id="accordion-sufficient" data-state="on">
+          <!-- 아코디언 헤더 (클릭 시 접고 펴기) -->
+          <button type="button" class="plan-header" id="header-sufficient">
+            <span class="plan-title">충분한 보장을 위한 플랜</span>
+            <div class="plan-arrow-box">
+              <div class="plan-arrow-icon"></div>
+            </div>
+          </button>
+          
+          <!-- 아코디언 바디 (상품 카드 영역) -->
+          <div class="plan-body-wrapper">
+            <div class="product-card" data-state="on">
+              <div class="product-top">
+                <div class="badge-main" data-color="pink" data-type="main">신담보</div>
+                <h3 class="product-name">(무) 메리츠통합간편건강보험(Ⅱ)2509(365입원, 수술고지간편심사형)</h3>
+              </div>
+              
+              <div class="product-details">
+                <div class="detail-summary">
+                  <span>30년납/90세만기</span>
+                  <div class="divider-line"></div>
+                  <span>납입면제</span>
+                  <div class="divider-line"></div>
+                  <span>해지환급미지급형</span>
+                </div>
+                <div class="badge-sub-list">
+                  <span class="badge-sub" data-color="green" data-type="sub">세만기</span>
+                  <span class="badge-sub" data-color="purple" data-type="sub">연만기</span>
+                  <span class="badge-sub" data-color="yellow" data-type="sub">무해지</span>
+                </div>
+              </div>
+              
+              <div class="product-bottom">
+                <button type="button" class="btn-change-expiry">만기변경</button>
+                <div class="product-price">12,383,982원</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_1 -->
+
+        <!-- 구역 1 소스보기 배지 그룹 -->
+        <div class="section-code-badge">
+          <span class="badge-label">충분플랜 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+      <!-- 구역 2: 합리적인 보험료 기준 플랜 섹션 -->
+      <section class="plan-section relative-section">
+
+        <!-- START: SECTION_2 -->
+        <div class="plan-accordion" id="accordion-reasonable" data-state="on">
+          <!-- 아코디언 헤더 (클릭 시 접고 펴기) -->
+          <button type="button" class="plan-header" id="header-reasonable">
+            <span class="plan-title">합리적인 보험료 기준 플랜</span>
+            <div class="plan-arrow-box">
+              <div class="plan-arrow-icon"></div>
+            </div>
+          </button>
+          
+          <!-- 아코디언 바디 (상품 카드 목록) -->
+          <div class="plan-body-wrapper">
+            <div class="product-list">
+              
+              <!-- 상품 카드 1 (on 상태) -->
+              <div class="product-card" data-state="on">
+                <div class="product-top">
+                  <div class="badge-main" data-color="pink" data-type="main">신담보</div>
+                  <h3 class="product-name">(무) 메리츠통합간편건강보험(Ⅱ)2509(365입원, 수술고지간편심사형)</h3>
+                </div>
+                
+                <div class="product-details">
+                  <div class="detail-summary">
+                    <span>30년납/90세만기</span>
+                    <div class="divider-line"></div>
+                    <span>납입면제</span>
+                    <div class="divider-line"></div>
+                    <span>해지환급미지급형</span>
+                  </div>
+                  <div class="badge-sub-list">
+                    <span class="badge-sub" data-color="green" data-type="sub">세만기</span>
+                    <span class="badge-sub" data-color="purple" data-type="sub">연만기</span>
+                    <span class="badge-sub" data-color="yellow" data-type="sub">무해지</span>
+                  </div>
+                </div>
+                
+                <div class="product-bottom">
+                  <button type="button" class="btn-change-expiry">만기변경</button>
+                  <div class="product-price">12,383,982원</div>
+                </div>
+              </div>
+
+              <!-- 상품 카드 2 (off 상태) -->
+              <div class="product-card" data-state="off">
+                <div class="product-top">
+                  <h3 class="product-name">(무) 메리츠통합간편건강보험(Ⅱ)2509(365입원, 수술고지간편심사형)</h3>
+                </div>
+                
+                <div class="product-details">
+                  <div class="detail-summary">
+                    <span>30년납/90세만기</span>
+                    <div class="divider-line"></div>
+                    <span>납입면제</span>
+                    <div class="divider-line"></div>
+                    <span>해지환급미지급형</span>
+                  </div>
+                  <div class="badge-sub-list">
+                    <span class="badge-sub" data-color="green" data-type="sub">세만기</span>
+                    <span class="badge-sub" data-color="yellow" data-type="sub">무해지</span>
+                  </div>
+                </div>
+                
+                <div class="product-bottom justify-end">
+                  <div class="product-price">83,982원</div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_2 -->
+
+        <!-- 구역 2 소스보기 배지 그룹 -->
+        <div class="section-code-badge">
+          <span class="badge-label">합리플랜 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 -->
+  <script src="page05.js"></script>
+</body>
+</html>

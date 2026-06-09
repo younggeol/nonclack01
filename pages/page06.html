@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카테고리 필터 설정</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 -->
+  <link rel="stylesheet" href="page06.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 (반응형 전환) -->
+  <main class="app-wrapper">
+    
+    <!-- 모바일 앱 화면 헤더 영역 -->
+    <header class="app-header">
+      <div class="header-bar">
+        <button type="button" class="btn-back" aria-label="이전 페이지">
+          <img src="../assets/images/btn_back.svg" alt="이전 페이지">
+        </button>
+        <span class="header-title">카테고리 필터</span>
+        <div class="header-empty"></div>
+      </div>
+    </header>
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 구역 1: 카테고리 필터 칩 섹션 -->
+      <section class="filter-section relative-section">
+        
+        <!-- START: SECTION_1 -->
+        <div class="filter-widget-container">
+          
+          <!-- 필터 칩 리스트 (기본 expanded 상태로 시작) -->
+          <div class="filter-chip-list" id="filter-chip-list" data-state="expanded">
+            
+            <!-- 칩 1: 사망/후유 (초기 선택 상태) -->
+            <button type="button" class="filter-chip" data-property-1="med" data-property-2="sel">
+              <span class="filter-chip-text">사망/후유</span>
+            </button>
+            
+            <!-- 칩 2: 인기/신담보 -->
+            <button type="button" class="filter-chip" data-property-1="med" data-property-2="nor">
+              <span class="filter-chip-text">인기/신담보</span>
+            </button>
+            
+            <!-- 칩 3: 암 -->
+            <button type="button" class="filter-chip" data-property-1="med" data-property-2="nor">
+              <span class="filter-chip-text">암</span>
+            </button>
+            
+            <!-- 칩 4: 수술비 -->
+            <button type="button" class="filter-chip" data-property-1="med" data-property-2="nor">
+              <span class="filter-chip-text">수술비</span>
+            </button>
+            
+            <!-- 칩 5: 입원일당 -->
+            <button type="button" class="filter-chip" data-property-1="med" data-property-2="nor">
+              <span class="filter-chip-text">입원일당</span>
+            </button>
+            
+            <!-- 칩 6: 기타 -->
+            <button type="button" class="filter-chip" data-property-1="med" data-property-2="nor">
+              <span class="filter-chip-text">기타</span>
+            </button>
+            
+          </div>
+          
+          <!-- 우측 접기/더보기 원형 버튼 -->
+          <button type="button" class="filter-toggle-btn" id="btn-toggle-chips" aria-label="필터 영역 접기">
+            <div class="toggle-circle-bg"></div>
+            <div class="toggle-arrow-box">
+              <div class="toggle-arrow-icon"></div>
+            </div>
+          </button>
+          
+        </div>
+        <!-- END: SECTION_1 -->
+
+        <!-- 구역 1 소스보기 배지 그룹 -->
+        <div class="section-code-badge">
+          <span class="badge-label">필터 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 -->
+  <script src="page06.js"></script>
+</body>
+</html>
