@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const fileName = path.substring(path.lastIndexOf('/') + 1); // 파일명 (예: page01.html)
   const baseName = fileName.replace('.html', ''); // 확장자 제외 파일명 (예: page01)
 
-  const cssUrl = `${baseName}.css`; // 1:1 대응되는 CSS 파일 경로
-  const jsUrl = `${baseName}.js`;   // 1:1 대응되는 JS 파일 경로
+  const cssUrl = isSubpage ? `../assets/temp/${baseName}.css` : `assets/temp/${baseName}.css`;   // 1:1 대응되는 CSS 파일 경로
+  const jsUrl = isSubpage ? `../assets/temp/${baseName}.js` : `assets/temp/${baseName}.js`;     // 1:1 대응되는 JS 파일 경로
 
   // 3. 소스 데이터를 저장할 객체
   const sources = {

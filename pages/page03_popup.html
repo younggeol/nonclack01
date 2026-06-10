@@ -8,12 +8,27 @@
   <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
   <link rel="stylesheet" href="../assets/css/variables.css">
   <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
-  <link rel="stylesheet" href="page03_popup.css">
+  <link rel="stylesheet" href="../assets/temp/page03_popup.css">
 </head>
 <body>
 
   <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 -->
   <main class="app-wrapper">
+    
+    <!-- 팝업이 닫혔을 때 보여줄 요약 대시보드 카드 영역 -->
+    <div class="main-content-area">
+      <header class="main-header">
+        <h1 class="main-header-title">보장 분석 결과 요약</h1>
+      </header>
+      <div class="summary-card">
+        <div class="summary-icon">🩺</div>
+        <h2 class="summary-card-title">나의 3대 진단 보장 자산</h2>
+        <p class="summary-card-desc">암, 뇌혈관, 심장질환 등의 핵심 보장 항목과 가입 금액을 쉽고 안전하게 관리하세요.</p>
+        <button type="button" class="btn-open-popup-trigger" id="btn-open-popup">
+          <span>3대 진단 설정하기</span>
+        </button>
+      </div>
+    </div>
     
     <!-- 모달 배경 딤(Dim) 처리용 레이어 -->
     <div class="popup-dim-overlay"></div>
@@ -156,6 +171,6 @@
   <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
   <script src="../assets/js/inspector.js"></script>
   <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
-  <script src="page03_popup.js"></script>
+  <script src="../assets/temp/page03_popup.js"></script>
 </body>
 </html>

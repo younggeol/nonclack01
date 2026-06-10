@@ -8,12 +8,27 @@
   <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
   <link rel="stylesheet" href="../assets/css/variables.css">
   <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
-  <link rel="stylesheet" href="page04.css">
+  <link rel="stylesheet" href="../assets/temp/page04.css">
 </head>
 <body>
 
   <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 (반응형 전환) -->
   <main class="app-wrapper">
+    
+    <!-- 팝업이 닫혔을 때 보여줄 요약 대시보드 카드 영역 -->
+    <div class="main-content-area">
+      <header class="main-header">
+        <h1 class="main-header-title">희망보험료 결과 요약</h1>
+      </header>
+      <div class="summary-card">
+        <div class="summary-icon">💰</div>
+        <h2 class="summary-card-title">나의 희망 보장 수준</h2>
+        <p class="summary-card-desc">월 납입 가능한 희망 보험료 범위를 설정하고, 알맞은 맞춤형 플랜 제안을 받아보세요.</p>
+        <button type="button" class="btn-open-popup-trigger" id="btn-open-popup">
+          <span>희망보험료 설정하기</span>
+        </button>
+      </div>
+    </div>
     
     <!-- 모달 배경 딤(Dim) 처리용 레이어 -->
     <div class="popup-dim-overlay"></div>
@@ -118,6 +133,6 @@
   <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
   <script src="../assets/js/inspector.js"></script>
   <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
-  <script src="page04.js"></script>
+  <script src="../assets/temp/page04.js"></script>
 </body>
 </html>

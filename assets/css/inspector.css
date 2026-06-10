@@ -242,7 +242,8 @@
   box-sizing: border-box;
   font-size: 10px;
   margin-top: 10px; /* 위 콘텐츠와의 간격 */
-  z-index: 10;
+  position: relative;
+  z-index: 20;
 }
 
 /* 풋터처럼 좁고 고정된 영역 내에서의 예외 정렬 처리 (자연스러운 배치) */
@@ -316,6 +317,8 @@
   box-sizing: border-box;
   animation: slide-down-fade 0.25s ease-out;
   text-align: left;
+  position: relative;
+  z-index: 20;
 }
 
 @keyframes slide-down-fade {

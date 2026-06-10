@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnConfirm = document.getElementById('btn-select-confirm');
   const btnClose = document.querySelector('.btn-close-popup');
   const dimOverlay = document.querySelector('.popup-dim-overlay');
+  const btnOpenPopup = document.getElementById('btn-open-popup');
+  const popupSheet = document.querySelector('.popup-sheet-container');
   
   const toast = document.getElementById('page-toast');
   const toastText = toast.querySelector('span');
@@ -54,27 +56,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. 선택 완료 버튼 클릭 이벤트
-  btnConfirm.addEventListener('click', () => {
-    const count = getSelectedCount();
-    showToast(`총 ${count}개의 항목이 선택되었습니다. 목록 화면으로 돌아갑니다...`);
-    
-    // 부드러운 화면 전환을 위해 약간의 지연 후 뒤로가기 실행
-    setTimeout(() => {
-      window.location.href = '../index.html';
-    }, 1200);
+  // 4. 팝업 열기 이벤트 바인딩
+  btnOpenPopup.addEventListener('click', () => {
+    dimOverlay.classList.add('active');
+    popupSheet.classList.add('active');
+    showToast('3대 진단 상세 설정을 엽니다.');
   });
 
-  // 5. 닫기 버튼 및 딤 영역 클릭 이벤트 (목록 페이지로 이동)
-  const goBack = () => {
-    showToast('설정을 취소하고 목록 화면으로 이동합니다...');
+  // 5. 선택 완료 버튼 클릭 이벤트
+  btnConfirm.addEventListener('click', () => {
+    const count = getSelectedCount();
+    showToast(`설정이 완료되었습니다! (총 ${count}개 선택)`);
+    
+    // 부드러운 화면 전환을 위해 약간의 지연 후 팝업 닫기
     setTimeout(() => {
-      window.location.href = '../index.html';
+      closePopup();
     }, 1000);
+  });
+
+  // 6. 닫기 버튼 및 딤 영역 클릭 이벤트
+  const closePopup = () => {
+    dimOverlay.classList.remove('active');
+    popupSheet.classList.remove('active');
   };
 
-  btnClose.addEventListener('click', goBack);
-  dimOverlay.addEventListener('click', goBack);
+  const handleCloseClick = () => {
+    showToast('설정을 취소했습니다.');
+    closePopup();
+  };
+
+  btnClose.addEventListener('click', handleCloseClick);
+  dimOverlay.addEventListener('click', handleCloseClick);
 
   // ==========================================
   // [유틸리티 함수 정의]
