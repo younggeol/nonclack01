@@ -1,0 +1,1024 @@
+/* ==========================================
+   [신규 퍼블리싱 템플릿 스타일 - n_page01.css]
+   이 파일은 가입설계 정보 입력 폼, 상품유형 카드, 
+   질병 고지 질문지 및 다크테마 대응을 담당합니다.
+   ========================================== */
+
+/* 1. 외부 Pretendard 폰트 임포트 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+body {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* 모바일 앱 기기 래퍼 */
+.app-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 스크롤 본문 공간 */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+/* 템플릿 카드 스타일 */
+.template-section {
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.template-section:last-of-type {
+  border-bottom: none;
+}
+
+.template-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.template-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   [구역 1] 1번 템플릿: 정보 입력 폼 관련 스타일
+   ========================================== */
+/* START: SECTION_1 */
+.form-template-container {
+  width: 100%;
+  padding: 20px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+/* 단계 표시 헤더 */
+.form-step-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+}
+
+.step-badge-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-circle-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.step-badge-item[data-state="on"] .step-circle-num {
+  background: #EF3B24;
+  color: white;
+}
+
+.step-badge-item[data-state="off"] .step-circle-num {
+  background: #EEEEEE;
+  color: #222222;
+}
+
+.step-badge-text {
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+.step-badge-item[data-state="off"] .step-badge-text {
+  display: none;
+}
+
+/* 타이틀 및 안내 텍스트 */
+.form-title-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.form-main-title {
+  color: #222222;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 32px;
+  margin: 0;
+}
+
+.form-description-box {
+  width: 100%;
+  color: #222222;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.highlight-red {
+  color: #BB1B21;
+}
+
+/* 상세설계/단순설계 탭바 */
+.design-type-tabs {
+  width: 100%;
+  background: white;
+  border-bottom: 1px #DDDDDD solid;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.design-tab-button {
+  flex: 1 1 0;
+  height: 56px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+.design-tab-text {
+  text-align: center;
+  font-size: 16px;
+  line-height: 20px;
+  transition: all var(--transition-fast);
+}
+
+.design-tab-button[data-state="active"] {
+  border-bottom: 2px #222222 solid;
+}
+
+.design-tab-button[data-state="active"] .design-tab-text {
+  color: #222222;
+  font-weight: 700;
+}
+
+.design-tab-button[data-state="inactive"] .design-tab-text {
+  color: #D5D8DC;
+  font-weight: 400;
+}
+
+/* 입력 필드 레이아웃 */
+.form-input-section {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.input-field-group {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.field-label {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.input-box-wrapper {
+  align-self: stretch;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  outline: 1px #DDDDDD solid;
+  outline-offset: -1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  cursor: text;
+  transition: outline var(--transition-fast);
+}
+
+.input-box-wrapper:focus-within,
+.input-box-wrapper.active-focus {
+  outline: 2px #222222 solid;
+  outline-offset: -2px;
+}
+
+.input-placeholder-text {
+  flex: 1 1 0;
+  color: #666666;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+}
+
+/* 버튼 그리드 선택자 (성별 / 운전용도) */
+.btn-select-grid {
+  align-self: stretch;
+  background: white;
+  border-radius: 8px;
+  outline: 1px #DDDDDD solid;
+  outline-offset: -1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.btn-select-item {
+  flex: 1 1 0;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+.btn-select-text {
+  text-align: center;
+  font-size: 15px;
+  line-height: 19px;
+  transition: all var(--transition-fast);
+}
+.radio-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.btn-select-item:has(.radio-input:checked) {
+  background: white;
+  outline: 2px #222222 solid;
+  outline-offset: -2px;
+  z-index: 2;
+}
+
+.btn-select-item:has(.radio-input:checked) .btn-select-text {
+  color: #222222;
+  font-weight: 700;
+}
+
+.btn-select-item:not(:has(.radio-input:checked)) .btn-select-text {
+  color: #888888;
+  font-weight: 400;
+}
+
+/* 연령계산 입력박스 및 특수버튼 */
+.age-calc-row {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+.age-unit-text {
+  color: #222222;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.btn-age-calc {
+  padding: 6px 12px;
+  background: #EEEEEE;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.btn-age-calc:hover {
+  background: #e2e8f0;
+}
+
+.btn-age-calc-text {
+  color: #222222;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+/* 직업검색 아이콘 */
+.job-search-icon-btn {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.job-search-circle {
+  width: 15px;
+  height: 15px;
+  left: 1px;
+  top: 1px;
+  position: absolute;
+  border-radius: 9999px;
+  border: 1.50px #222222 solid;
+  box-sizing: border-box;
+}
+
+.job-search-handle {
+  width: 5px;
+  height: 5px;
+  left: 13px;
+  top: 13px;
+  position: absolute;
+  border-left: 1.50px #222222 solid;
+  border-top: 1.50px #222222 solid;
+  transform: rotate(135deg);
+  transform-origin: top left;
+}
+
+/* 직업급수 전용 그리드 레이아웃 */
+.grade-select-wrapper {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+}
+
+.grade-select-grid {
+  flex: 1 1 0;
+  background: white;
+  border-radius: 8px;
+  outline: 1px #DDDDDD solid;
+  outline-offset: -1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.readonly-box {
+  width: 100px;
+  height: 56px;
+  background: #F8F9FA;
+  border-radius: 8px;
+  border: 1px #DDDDDD solid;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #888888;
+  font-size: 13px;
+}
+/* END: SECTION_1 */
+
+/* ==========================================
+   [구역 2] 2번 템플릿: 상품유형 선택 관련 스타일
+   ========================================== */
+/* START: SECTION_2 */
+.product-type-container {
+  width: 100%;
+  padding-bottom: 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+/* 헤더 일러스트 배지 */
+.product-header-row {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.illust-badge-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.illust-badge-base {
+  width: 8px;
+  height: 7px;
+  left: 8px;
+  top: 14.50px;
+  position: absolute;
+  background: #EF3B24;
+  outline: 1.50px #EF3B24 solid;
+  outline-offset: -0.75px;
+}
+
+.illust-badge-circle {
+  width: 14px;
+  height: 14px;
+  left: 5px;
+  top: 2.50px;
+  position: absolute;
+  background: #FFD46F;
+  border-radius: 9999px;
+}
+
+.product-header-title {
+  flex: 1 1 0;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26.64px;
+}
+
+/* 유형 선택 카드 그리드 */
+.product-card-grid {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.product-type-card {
+  flex: 1 1 0;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  outline: 1px #DDDDDD solid;
+  outline-offset: -1px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+.product-type-card:has(.radio-input:checked) {
+  outline: 1px #EF3B24 solid;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-radio-circle {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+
+.card-radio-bg {
+  width: 20px;
+  height: 20px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+.product-type-card:has(.radio-input:checked) .card-radio-bg {
+  background: #EF3B24;
+}
+
+.product-type-card:not(:has(.radio-input:checked)) .card-radio-bg {
+  background: white;
+  border: 1px #D5D8DC solid;
+}
+
+.card-radio-check {
+  width: 8.33px;
+  height: 5.56px;
+  left: 5.83px;
+  top: 7.78px;
+  position: absolute;
+  border-left: 1.5px solid white;
+  border-bottom: 1.5px solid white;
+  transform: rotate(-45deg);
+  transition: border-color var(--transition-fast);
+}
+
+.product-type-card:not(:has(.radio-input:checked)) .card-radio-check {
+  border-color: #D5D8DC;
+}
+
+.product-card-label {
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+/* 상품 설명 알림 박스 */
+.product-desc-box {
+  align-self: stretch;
+  padding: 16px;
+  background: #F9F9F9;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.desc-bullet-row {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.desc-bullet-dot {
+  width: 4px;
+  height: 4px;
+  background: #222222;
+  border-radius: 999px;
+  margin-top: 8px;
+}
+
+.desc-text-group {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.desc-main-text {
+  align-self: stretch;
+  color: #222222;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.desc-sub-text {
+  align-self: stretch;
+  color: #666666;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+}
+/* END: SECTION_2 */
+
+/* ==========================================
+   [구역 3] 3번 템플릿: 질병 고지 질문지 관련 스타일
+   ========================================== */
+/* START: SECTION_3 */
+.questionnaire-container {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  background: #F5F7F8;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+/* 질문지 안내 및 일괄선택 헤더 */
+.question-header-row {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.question-header-left {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.question-check-box-icon {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #666666;
+  border-radius: 2px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.question-check-box-icon::after {
+  content: '';
+  width: 6px;
+  height: 4px;
+  border-left: 1.5px solid #666666;
+  border-bottom: 1.5px solid #666666;
+  transform: rotate(-45deg);
+  position: absolute;
+  left: 3.5px;
+  top: 3.5px;
+}
+
+.question-header-desc {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+/* 전부 아니오 버튼 */
+.all-no-trigger-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.all-no-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+.all-no-trigger-btn[data-state="selected"] .all-no-circle {
+  background: #EF3B24;
+}
+
+.all-no-trigger-btn[data-state="default"] .all-no-circle {
+  background: white;
+  border: 1px #D5D8DC solid;
+}
+
+.all-no-check-icon {
+  width: 8.33px;
+  height: 5.56px;
+  border-left: 1.5px solid white;
+  border-bottom: 1.5px solid white;
+  transform: rotate(-45deg);
+  margin-left: 5.8px;
+  margin-top: 5.5px;
+  transition: border-color var(--transition-fast);
+}
+
+.all-no-trigger-btn[data-state="default"] .all-no-check-icon {
+  border-color: #D5D8DC;
+}
+
+.all-no-label {
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+/* 질문 목록 그리드 */
+.question-list-group {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.question-block {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.question-title-row {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.question-number {
+  width: 16px;
+  color: black;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20.72px;
+}
+
+.question-text-box {
+  flex: 1 1 0;
+  color: black;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20.72px;
+}
+
+.question-sub-desc {
+  align-self: stretch;
+  color: #666666;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 19.24px;
+  margin-top: 4px;
+}
+
+/* 네/아니오 답변 카드 그리드 */
+.answer-card-row {
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.answer-card-item {
+  flex: 1 1 0;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  outline: 1px #DDDDDD solid;
+  outline-offset: -1px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: all var(--transition-fast);
+}
+
+.answer-card-item:has(.radio-input:checked) {
+  background: #FAEBE6;
+  outline: 1px #F8D8CD solid;
+}
+
+.answer-card-item:not(:has(.radio-input:checked)) {
+  background: white;
+  outline: 1px #DDDDDD solid;
+}
+
+.answer-radio-circle {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.answer-check-icon {
+  width: 8px;
+  height: 6px;
+  border-left: 1.6px solid transparent;
+  border-bottom: 1.6px solid transparent;
+  transform: rotate(-45deg);
+  transition: border-color var(--transition-fast);
+}
+
+.answer-card-item:has(.radio-input:checked) .answer-check-icon {
+  border-color: #EF3B24;
+}
+
+.answer-card-item:not(:has(.radio-input:checked)) .answer-check-icon {
+  border-color: #D5D8DC;
+}
+
+.answer-label-text {
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+}
+/* END: SECTION_3 */
+
+/* 다크 테마 설정 대응 */
+@media (prefers-color-scheme: dark) {
+  .app-wrapper {
+    background: #1e293b;
+  }
+  .app-content {
+    background: #0f172a;
+  }
+  .template-card {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  
+  /* 1번 템플릿 다크 */
+  .form-template-container {
+    background: #1e293b;
+  }
+  .step-badge-item[data-state="off"] .step-circle-num {
+    background: #334155;
+    color: #94a3b8;
+  }
+  .form-main-title,
+  .form-description-box {
+    color: #f8fafc;
+  }
+  .design-type-tabs {
+    background: #1e293b;
+    border-bottom-color: #334155;
+  }
+  .design-tab-button[data-state="active"] {
+    border-bottom-color: #f8fafc;
+  }
+  .design-tab-button[data-state="active"] .design-tab-text {
+    color: #f8fafc;
+  }
+  .design-tab-button[data-state="inactive"] .design-tab-text {
+    color: #475569;
+  }
+  .input-box-wrapper {
+    background: #0f172a;
+    border-color: #334155;
+  }
+  .input-box-wrapper:focus-within,
+  .input-box-wrapper.active-focus {
+    outline-color: #f8fafc;
+  }
+  .input-placeholder-text {
+    color: #f8fafc;
+  }
+  .field-label {
+    color: #94a3b8;
+  }
+  .btn-select-grid {
+    background: #0f172a;
+    border-color: #334155;
+  }
+  .btn-select-item:has(.radio-input:checked) {
+    background: #1e293b;
+    outline-color: #f8fafc;
+  }
+  .btn-select-item:has(.radio-input:checked) .btn-select-text {
+    color: #f8fafc;
+  }
+  .btn-select-item:not(:has(.radio-input:checked)) .btn-select-text {
+    color: #475569;
+  }
+  .age-unit-text {
+    color: #f8fafc;
+  }
+  .btn-age-calc {
+    background: #334155;
+  }
+  .btn-age-calc-text {
+    color: #f8fafc;
+  }
+  .job-search-circle {
+    border-color: #f8fafc;
+  }
+  .job-search-handle {
+    border-color: #f8fafc;
+  }
+  .grade-select-grid {
+    border-color: #334155;
+  }
+  .readonly-box {
+    background: #121824;
+    border-color: #334155;
+    color: #64748b;
+  }
+
+  /* 2번 템플릿 다크 */
+  .product-type-container {
+    background: #1e293b;
+  }
+  .product-header-title {
+    color: #f8fafc;
+  }
+  .product-type-card {
+    background: #0f172a;
+    border-color: #334155;
+  }
+  .product-type-card:has(.radio-input:checked) {
+    outline-color: #EF3B24;
+  }
+  .product-type-card:not(:has(.radio-input:checked)) .card-radio-bg {
+    background: #0f172a;
+    border-color: #475569;
+  }
+  .product-type-card:not(:has(.radio-input:checked)) .card-radio-check {
+    border-color: #475569;
+  }
+  .product-card-label {
+    color: #f8fafc;
+  }
+  .product-desc-box {
+    background: #121824;
+  }
+  .desc-bullet-dot {
+    background: #f8fafc;
+  }
+  .desc-main-text {
+    color: #f8fafc;
+  }
+  .desc-sub-text {
+    color: #94a3b8;
+  }
+
+  /* 3번 템플릿 다크 */
+  .questionnaire-container {
+    background: #121824;
+  }
+  .question-check-box-icon {
+    border-color: #94a3b8;
+  }
+  .question-check-box-icon::after {
+    border-color: #94a3b8;
+  }
+  .question-header-desc,
+  .all-no-label {
+    color: #f8fafc;
+  }
+  .all-no-trigger-btn[data-state="default"] .all-no-circle {
+    background: #1e293b;
+    border-color: #475569;
+  }
+  .all-no-trigger-btn[data-state="default"] .all-no-check-icon {
+    border-color: #475569;
+  }
+  .question-number,
+  .question-text-box {
+    color: #f8fafc;
+  }
+  .question-sub-desc {
+    color: #94a3b8;
+  }
+  .answer-card-item:has(.radio-input:checked) {
+    background: #2d1a18;
+    outline-color: #4c221e;
+  }
+  .answer-card-item:not(:has(.radio-input:checked)) {
+    background: #0f172a;
+    outline-color: #334155;
+  }
+  .answer-card-item:not(:has(.radio-input:checked)) .answer-check-icon {
+    border-color: #475569;
+  }
+  .answer-label-text {
+    color: #f8fafc;
+  }
+}

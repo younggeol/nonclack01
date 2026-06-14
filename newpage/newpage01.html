@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신규 퍼블리싱 템플릿</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
+  <link rel="stylesheet" href="../assets/temp/newpage01.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 -->
+  <main class="app-wrapper">
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 1번 템플릿 구역: 탭 버튼 메뉴 -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">1번 템플릿: 탭 버튼 메뉴</h2>
+        
+        <div class="template-card">
+          <!-- START: SECTION_1 -->
+          <!-- 1번 템플릿 페이지 탭 버튼 (인터랙션 적용) -->
+          <div class="template-tab-container">
+            <!-- 1단계: 고객입력 (초기 활성화) -->
+            <div class="template-tab-item" data-step="1" data-state="on">
+              <div class="template-tab-circle">1</div>
+              <span class="template-tab-text">고객입력</span>
+            </div>
+            <!-- 2단계: 보장분석 -->
+            <div class="template-tab-item" data-step="2" data-state="off">
+              <div class="template-tab-circle">2</div>
+              <span class="template-tab-text">보장분석</span>
+            </div>
+            <!-- 3단계: 테마선택 -->
+            <div class="template-tab-item" data-step="3" data-state="off">
+              <div class="template-tab-circle">3</div>
+              <span class="template-tab-text">테마선택</span>
+            </div>
+            <!-- 4단계: AI설계결과 -->
+            <div class="template-tab-item" data-step="4" data-state="off">
+              <div class="template-tab-circle">4</div>
+              <span class="template-tab-text">AI설계결과</span>
+            </div>
+          </div>
+          <!-- END: SECTION_1 -->
+        </div>
+
+        <!-- 구역 1 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">탭 버튼 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+      </section>
+
+
+      <!-- 2번 템플릿 구역: 상단 헤더 메뉴 -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">2번 템플릿: 상단 헤더 메뉴</h2>
+        
+        <div class="template-card">
+          <!-- START: SECTION_2 -->
+          <!-- 2번 템플릿 페이지 상단 메뉴 -->
+          <div class="template-header-menu">
+            <!-- 뒤로가기 버튼 -->
+            <div class="back-btn-wrapper" aria-label="이전 페이지">
+              <div class="back-btn-rotate"></div>
+              <div class="back-btn-arrow"></div>
+            </div>
+            <!-- 헤더 타이틀 -->
+            <h1 class="header-title-text">AI가입설계 도우미</h1>
+            <!-- 햄버거 메뉴 버튼 -->
+            <div class="hamburger-btn-wrapper" aria-label="메뉴">
+              <div class="hamburger-line-1"></div>
+              <div class="hamburger-line-2"></div>
+              <div class="hamburger-line-3"></div>
+            </div>
+          </div>
+          <!-- END: SECTION_2 -->
+        </div>
+
+        <!-- 구역 2 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">상단 메뉴 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="js">JS</button>
+        </div>
+      </section>
+
+
+      <!-- 3번 템플릿 구역: 프로그레스 바 -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">3번 템플릿: 프로그레스 바</h2>
+        
+        <div class="template-card">
+          <!-- START: SECTION_3 -->
+          <!-- 3번 템플릿 프로그레스 바 (1번 템플릿과 연동) -->
+          <div class="progress-bar-container">
+            <div class="progress-track">
+              <div class="progress-segments">
+                <!-- 1단계 레드 (기본 활성) -->
+                <div class="progress-segment" data-step="1" data-active="true"></div>
+                <!-- 2단계 -->
+                <div class="progress-segment" data-step="2" data-active="false"></div>
+                <!-- 3단계 -->
+                <div class="progress-segment" data-step="3" data-active="false"></div>
+                <!-- 4단계 -->
+                <div class="progress-segment" data-step="4" data-active="false"></div>
+              </div>
+            </div>
+          </div>
+          <!-- END: SECTION_3 -->
+        </div>
+
+        <!-- 구역 3 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">진행바 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="js">JS</button>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
+  <script src="../assets/temp/newpage01.js"></script>
+</body>
+</html>

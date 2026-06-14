@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신규 퍼블리싱 템플릿 02</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
+  <link rel="stylesheet" href="../assets/temp/newpage02.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 -->
+  <main class="app-wrapper">
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 1번 템플릿 구역: 체크버튼 (토글 스위치) -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">1번 템플릿: 체크버튼 (토글 스위치)</h2>
+        
+        <div class="template-card">
+          <!-- START: SECTION_1 -->
+          <!-- 1번 템플릿 체크버튼 (인터랙션 적용) -->
+          <label class="toggle-switch-container">
+            <input type="checkbox" class="checkbox-input" id="guarantee-analysis-checkbox">
+            <!-- 스위치 트랙 및 썸 원형 버튼 -->
+            <div class="switch-track">
+              <div class="switch-thumb"></div>
+            </div>
+            <!-- 스위치 라벨 -->
+            <span class="switch-label">보장분석 반영</span>
+          </label>
+          <!-- END: SECTION_1 -->
+        </div>
+
+        <!-- 구역 1 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">체크버튼 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+      </section>
+
+
+      <!-- 2번 템플릿 구역: 폴딩버튼 (접힌 아코디언 카드) -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">2번 템플릿: 폴딩버튼 (접힌 아코디언)</h2>
+        
+        <!-- START: SECTION_2 -->
+        <!-- 2번 템플릿 폴딩버튼 (닫힌 상태 카드) -->
+        <div class="accordion-card" id="card-popularity" data-state="off">
+          <!-- 헤더 영역 (클릭 시 아코디언 토글) -->
+          <header class="accordion-header">
+            <div class="accordion-title-area">
+              <!-- 선택 체크박스 (전체선택 기능) -->
+              <label class="header-checkbox">
+                <input type="checkbox" class="checkbox-input header-checkbox-input" checked>
+                <div class="header-checkbox-circle"></div>
+                <div class="header-checkbox-icon"></div>
+              </label>
+              <span class="accordion-title-text">판매인기/신담보</span>
+            </div>
+            <!-- 접기/펼치기 제어용 화살표 -->
+            <div class="accordion-expander" data-expander="Expand">
+              <div class="expander-arrow"></div>
+            </div>
+          </header>
+
+          <!-- 아코디언 본문 (닫힘 상태이므로 기본 숨김) -->
+          <div class="accordion-body">
+            <div class="accordion-divider"></div>
+            <div class="accordion-content-list">
+              <!-- 카테고리 1: 임시 담보 항목군 -->
+              <div class="group-title-row">
+                <span class="group-title-text">판매인기 특약</span>
+              </div>
+              <div class="options-subgrid">
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input" checked>
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">독점인기 특별약관</span>
+                </label>
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input" checked>
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">신설 가입보장형 담보</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_2 -->
+
+        <!-- 구역 2 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">폴딩버튼 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="js">JS</button>
+        </div>
+      </section>
+
+
+      <!-- 3번 템플릿 구역: 폴딩 목록 (펼쳐진 아코디언 카드) -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">3번 템플릿: 폴딩 목록 (펼쳐진 아코디언)</h2>
+        
+        <!-- START: SECTION_3 -->
+        <!-- 3번 템플릿 폴딩 목록 (펼쳐진 상태 카드) -->
+        <div class="accordion-card" id="card-diagnosis" data-state="on">
+          <!-- 헤더 영역 (클릭 시 아코디언 토글) -->
+          <header class="accordion-header">
+            <div class="accordion-title-area">
+              <!-- 선택 체크박스 (전체선택 기능) -->
+              <label class="header-checkbox">
+                <input type="checkbox" class="checkbox-input header-checkbox-input">
+                <div class="header-checkbox-circle"></div>
+                <div class="header-checkbox-icon"></div>
+              </label>
+              <span class="accordion-title-text">3대 진단</span>
+            </div>
+            <!-- 접기/펼치기 제어용 화살표 -->
+            <div class="accordion-expander" data-expander="Collapse">
+              <div class="expander-arrow"></div>
+            </div>
+          </header>
+
+          <!-- 아코디언 펼침 본문 -->
+          <div class="accordion-body">
+            <!-- 구분선 -->
+            <div class="accordion-divider"></div>
+            
+            <div class="accordion-content-list">
+              <!-- 카테고리 1: 암 -->
+              <div class="group-title-row">
+                <span class="group-title-text">암</span>
+              </div>
+              <div class="options-subgrid">
+                <!-- 옵션 1: 암진단비 (선택됨) -->
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input" checked>
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">암진단비</span>
+                </label>
+                <!-- 옵션 2: 통합암진단비 -->
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input">
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">통합암진단비</span>
+                </label>
+                <!-- 옵션 3: 암수술비 -->
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input">
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">암수술비</span>
+                </label>
+                <!-- 옵션 4: 암주요치료비 -->
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input">
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">암주요치료비</span>
+                </label>
+                <!-- 옵션 5: 고액항암치료비 (선택됨) -->
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input" checked>
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">고액항암치료비</span>
+                </label>
+              </div>
+
+              <!-- 카테고리 2: 뇌혈관 -->
+              <div class="group-title-row">
+                <span class="group-title-text">뇌혈관</span>
+              </div>
+              <div class="options-subgrid">
+                <!-- 옵션 1: 뇌혈관 진단비 -->
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input">
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">뇌혈관 진단비</span>
+                </label>
+                <!-- 옵션 2: 뇌혈관 수술비 -->
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input">
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">뇌혈관 수술비</span>
+                </label>
+                <!-- 옵션 3: 2대 주요치료비 (선택됨) -->
+                <label class="option-item">
+                  <input type="checkbox" class="checkbox-input option-checkbox-input" checked>
+                  <div class="option-checkbox">
+                    <div class="option-check-icon"></div>
+                  </div>
+                  <span class="option-label-text">2대 주요치료비</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_3 -->
+
+        <!-- 구역 3 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">폴딩목록 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="js">JS</button>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
+  <script src="../assets/temp/newpage02.js"></script>
+</body>
+</html>

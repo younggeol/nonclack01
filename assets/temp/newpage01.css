@@ -1,0 +1,349 @@
+/* ==========================================
+   [신규 퍼블리싱 템플릿 스타일 - newpage01.css]
+   이 파일은 신규 페이지의 3가지 템플릿 UI 구성과
+   인터랙티브한 탭 전환 시각화 효과 및 다크테마 대응을 담당합니다.
+   ========================================== */
+
+/* 1. 외부 Pretendard 폰트 임포트 */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
+body {
+  font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* 모바일 앱 기기 래퍼 */
+.app-wrapper {
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 스크롤 본문 공간 */
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding-bottom: 40px;
+}
+
+/* 템플릿 카드 스타일 */
+.template-section {
+  padding: 24px 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.template-section:last-of-type {
+  border-bottom: none;
+}
+
+.template-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.template-card {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  padding: 8px 0;
+}
+
+/* ==========================================
+   [구역 1] 1번 템플릿: 탭 메뉴 관련 스타일
+   ========================================== */
+/* START: SECTION_1 */
+.template-tab-container {
+  width: 100%;
+  padding: 16px 20px;
+  background: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.template-tab-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.template-tab-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  transition: all var(--transition-fast);
+}
+
+.template-tab-item[data-state="on"] .template-tab-circle {
+  background: #EF3B24;
+  color: white;
+  transform: scale(1.05);
+}
+
+.template-tab-item[data-state="off"] .template-tab-circle {
+  background: #EEEEEE;
+  color: #222222;
+}
+
+.template-tab-text {
+  color: #222222;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  white-space: nowrap;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.template-tab-item[data-state="off"] .template-tab-text {
+  display: none;
+}
+/* END: SECTION_1 */
+
+/* ==========================================
+   [구역 2] 2번 템플릿: 상단 메뉴 관련 스타일
+   ========================================== */
+/* START: SECTION_2 */
+.template-header-menu {
+  width: 100%;
+  padding: 16px;
+  background: white;
+  border-bottom: 1px #EEEEEE solid;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 16px;
+  box-sizing: border-box;
+}
+
+.back-btn-wrapper {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.back-btn-wrapper:hover {
+  opacity: 0.7;
+}
+
+.back-btn-rotate {
+  width: 24px;
+  height: 24px;
+  left: 24px;
+  top: 24px;
+  position: absolute;
+  transform: rotate(180deg);
+  transform-origin: top left;
+}
+
+.back-btn-arrow {
+  width: 7.06px;
+  height: 12.93px;
+  left: 15px;
+  top: 18.93px;
+  position: absolute;
+  transform: rotate(180deg);
+  transform-origin: top left;
+  outline: 1.50px #222222 solid;
+  outline-offset: -0.75px;
+}
+
+.header-title-text {
+  flex: 1 1 0;
+  color: #222222;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  word-wrap: break-word;
+}
+
+.hamburger-btn-wrapper {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+
+.hamburger-btn-wrapper:hover {
+  opacity: 0.7;
+}
+
+.hamburger-line-1 {
+  width: 16px;
+  height: 1px;
+  left: 4px;
+  top: 5px;
+  position: absolute;
+  outline: 1.50px #222222 solid;
+  outline-offset: -0.75px;
+}
+
+.hamburger-line-2 {
+  width: 16px;
+  height: 1px;
+  left: 4px;
+  top: 11.25px;
+  position: absolute;
+  outline: 1.50px #222222 solid;
+  outline-offset: -0.75px;
+}
+
+.hamburger-line-3 {
+  width: 16px;
+  height: 1px;
+  left: 4px;
+  top: 17.50px;
+  position: absolute;
+  outline: 1.50px #222222 solid;
+  outline-offset: -0.75px;
+}
+/* END: SECTION_2 */
+
+/* ==========================================
+   [구역 3] 3번 템플릿: 프로그레스 바 관련 스타일
+   ========================================== */
+/* START: SECTION_3 */
+.progress-bar-container {
+  width: 100%;
+  padding: 24px 20px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.progress-track {
+  width: 100%;
+  height: 4px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F6F6F6;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-segments {
+  width: 100%;
+  height: 4px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.progress-segment {
+  flex: 1 1 0;
+  height: 4px;
+  background: #F6F6F6;
+  transition: background 0.3s ease;
+}
+
+.progress-segment[data-active="true"] {
+  background: #DE4336;
+}
+/* END: SECTION_3 */
+
+/* ==========================================
+   [공통 스타일] 모형 기기 래퍼 내 정렬 및 알림창
+   ========================================== */
+.toast-message {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #222222;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-message.show {
+  bottom: 80px;
+}
+
+/* 다크 테마 설정 대응 */
+@media (prefers-color-scheme: dark) {
+  .app-wrapper {
+    background: #1e293b;
+  }
+  .app-content {
+    background: #0f172a;
+  }
+  .template-card {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  .template-tab-container {
+    background: #1e293b;
+  }
+  .template-tab-text {
+    color: #f8fafc;
+  }
+  .template-tab-item[data-state="off"] .template-tab-circle {
+    background: #334155;
+    color: #94a3b8;
+  }
+  .template-header-menu {
+    background: #1e293b;
+    border-bottom-color: #334155;
+  }
+  .header-title-text {
+    color: #f8fafc;
+  }
+  .back-btn-arrow {
+    outline-color: #f8fafc;
+  }
+  .hamburger-line-1,
+  .hamburger-line-2,
+  .hamburger-line-3 {
+    outline-color: #f8fafc;
+  }
+  .progress-bar-container {
+    background: #1e293b;
+  }
+  .progress-track {
+    background: #334155;
+  }
+  .progress-segment {
+    background: #334155;
+  }
+}

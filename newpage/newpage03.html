@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>신규 퍼블리싱 템플릿 03</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
+  <link rel="stylesheet" href="../assets/temp/newpage03.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 -->
+  <main class="app-wrapper">
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 1번 템플릿 구역: 폴딩 메뉴 및 목록 -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">1번 템플릿: 폴딩 메뉴 및 목록</h2>
+        
+        <div class="template-card">
+          <!-- START: SECTION_1 -->
+          <!-- 1번 템플릿 폴딩 메뉴 및 목록 (인터랙션 적용) -->
+          <div class="plan-accordion-container" data-state="on">
+            <!-- 아코디언 폴딩 헤더 -->
+            <header class="plan-folding-header">
+              <h3 class="plan-header-title">합리적인 보험료 기준 플랜</h3>
+              <span class="plan-count-badge">2건</span>
+              <div class="plan-expander">
+                <div class="plan-expander-arrow"></div>
+              </div>
+            </header>
+
+            <!-- 플랜 리스트 본체 -->
+            <div class="plan-list-wrapper">
+              
+              <!-- 플랜 카드 1 (초기 활성화) -->
+              <div class="plan-card" data-state="on">
+                <div class="plan-card-body">
+                  <div class="plan-card-header">
+                    <!-- 신담보 배지 -->
+                    <div class="badge-main">
+                      <span class="badge-main-text">신담보</span>
+                    </div>
+                    <h4 class="plan-title">통합간편건강보험(세만기형)2607(355입원,수술고지간편심사형)</h4>
+                  </div>
+                  
+                  <div class="plan-meta-section">
+                    <!-- 납기/만기 상세 명세 -->
+                    <div class="plan-meta-row">
+                      <span class="plan-meta-text">30년납/90세만기</span>
+                      <div class="plan-meta-divider"></div>
+                      <span class="plan-meta-text">납입면제</span>
+                      <div class="plan-meta-divider"></div>
+                      <span class="plan-meta-text">해지환급미지급형</span>
+                    </div>
+                    
+                    <!-- 보조 속성 태그 배지들 -->
+                    <div class="plan-sub-tags">
+                      <div class="badge-sub" data-color="green">
+                        <span>세만기</span>
+                      </div>
+                      <div class="badge-sub" data-color="purple">
+                        <span>연만기</span>
+                      </div>
+                      <div class="badge-sub" data-color="yellow">
+                        <span>무해지</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="plan-card-footer">
+                  <!-- 만기변경 버튼 -->
+                  <button type="button" class="btn-change-term">
+                    <span class="btn-change-term-text">만기변경</span>
+                  </button>
+                  <!-- 금액 표시 -->
+                  <span class="plan-price-text">12,383,982원</span>
+                </div>
+              </div>
+
+              <!-- 플랜 카드 2 (초기 비활성화) -->
+              <div class="plan-card" data-state="off">
+                <div class="plan-card-body">
+                  <div class="plan-card-header">
+                    <h4 class="plan-title">(무) 메리츠통합간편건강보험(Ⅱ)2509(365입원, 수술고지간편심사형)</h4>
+                  </div>
+                  
+                  <div class="plan-meta-section">
+                    <!-- 납기/만기 상세 명세 -->
+                    <div class="plan-meta-row">
+                      <span class="plan-meta-text">30년납/90세만기</span>
+                      <div class="plan-meta-divider"></div>
+                      <span class="plan-meta-text">납입면제</span>
+                      <div class="plan-meta-divider"></div>
+                      <span class="plan-meta-text">해지환급미지급형</span>
+                    </div>
+                    
+                    <!-- 보조 속성 태그 배지들 -->
+                    <div class="plan-sub-tags">
+                      <div class="badge-sub" data-color="green">
+                        <span>세만기</span>
+                      </div>
+                      <div class="badge-sub" data-color="yellow">
+                        <span>무해지</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="plan-card-footer">
+                  <span class="plan-price-text">83,982원</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- END: SECTION_1 -->
+        </div>
+
+        <!-- 구역 1 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">폴딩목록 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
+  <script src="../assets/temp/newpage03.js"></script>
+</body>
+</html>

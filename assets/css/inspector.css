@@ -80,14 +80,12 @@
 /* 4. 소스 보기 서랍 컨테이너 (Bottom Drawer) */
 .inspector-drawer {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 75vh; /* 화면의 75% 높이 차지 (모바일/태블릿 화면 맞춤) */
+  height: 100vh; /* 화면 전체 높이 차지 (풀 팝업) */
   background: var(--surface-color);
-  border-top-left-radius: var(--radius-lg);
-  border-top-right-radius: var(--radius-lg);
-  box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   transform: translateY(100%);
@@ -96,15 +94,15 @@
   overflow: hidden;
 }
 
-/* 태블릿 이상 가로폭일 때 중앙 정렬 */
+/* 태블릿 이상 가로폭일 때도 풀 팝업 동일 유지 */
 @media (min-width: 769px) {
   .inspector-drawer {
-    max-width: var(--tablet-width);
-    left: 50%;
-    transform: translate(-50%, 100%);
+    max-width: 100%;
+    left: 0;
+    transform: translateY(100%);
   }
   .inspector-drawer.open {
-    transform: translate(-50%, 0);
+    transform: translateY(0);
   }
 }
 
@@ -119,6 +117,20 @@
   justify-content: space-between;
   padding: 16px 20px;
   border-bottom: 1px solid var(--border-color);
+  background: var(--surface-color);
+}
+
+.inspector-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inspector-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
 }
 
 /* 서랍 탭 네비게이션 */
@@ -189,17 +201,33 @@
 /* 6. 서랍 본문 코드 스크롤 영역 (Drawer Content) */
 .inspector-drawer-content {
   flex: 1;
-  overflow: auto;
+  overflow: auto; /* 세로/가로 스크롤 가능 */
   background: #0d1117; /* 어두운 코드 스키마 전용 (Github Dark와 유사) */
   position: relative;
+  -webkit-overflow-scrolling: touch; /* 모바일 관성 스크롤 지원 */
+}
+
+/* 뷰어 전용 스크롤바 디자인 (다크 배경 최적화) */
+.inspector-drawer-content::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.inspector-drawer-content::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+.inspector-drawer-content::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}
+.inspector-drawer-content::-webkit-scrollbar-thumb:hover {
+  background: #8b949e;
 }
 
 .inspector-code-panel {
   display: none;
   padding: 20px;
   margin: 0;
-  white-space: pre-wrap;
-  word-break: break-all;
+  white-space: pre; /* 줄바꿈 방지하여 원본 포맷 유지 (가로 스크롤 활성화) */
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.6;
@@ -208,6 +236,24 @@
 
 .inspector-code-panel.active {
   display: block;
+}
+
+/* 모바일 좁은 화면 최적화 */
+@media (max-width: 480px) {
+  .inspector-drawer-header {
+    padding: 10px 12px;
+  }
+  .inspector-title {
+    font-size: 12px;
+  }
+  .inspector-tab {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+  .inspector-action-btn {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 /* 7. 코드 구문 강조 스타일 (Syntax Highlighting) */

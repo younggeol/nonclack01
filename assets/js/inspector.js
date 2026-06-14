@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let activeSection = null; // 현재 열린 특정 코드 구역 구분자 (예: SECTION_1)
 
   // 1. 공통 스타일시트(inspector.css) 동적 주입
-  const isSubpage = window.location.pathname.includes('/pages/');
+  const isSubpage = window.location.pathname.includes('/pages/') || 
+                    window.location.pathname.includes('/pages2/') || 
+                    window.location.pathname.includes('/newpage/');
   const assetsPath = isSubpage ? '../assets/' : './assets/';
   const pagesPrefix = isSubpage ? '' : 'pages/';
 
@@ -40,219 +42,44 @@ document.addEventListener('DOMContentLoaded', () => {
     js: { content: '', loaded: false }
   };
 
-  // 4. 전역/인라인 뷰어 초기 설정 분기
-  if (hasSectionBadges) {
-    // [구역별 보기 모드] 각 툴바 바로 아래에 인라인 아코디언 코드 패널 생성 및 주입
-    initInlineViewers();
-  } else {
-    // [전역 보기 모드] 하단 플로팅 독 및 오버레이 서랍창 빌드 (폴백 호환성 보장)
-    createLegacyDrawerUI();
-  }
-
-  // ==========================================
-  // [인라인 아코디언 소스 뷰어 관련 로직]
-  // ==========================================
-
-  function initInlineViewers() {
-    const badges = document.querySelectorAll('.section-code-badge');
-    badges.forEach(badge => {
-      // 툴바 안의 첫 번째 버튼에서 구역 정보(SECTION_X) 추출
-      const sampleBtn = badge.querySelector('.btn-inspect');
-      if (!sampleBtn) return;
-      const section = sampleBtn.getAttribute('data-section');
-
-      // 툴바 바로 아래(nextSibling)에 삽입될 인라인 코드 패널 마크업 동적 빌드
-      const panelHtml = `
-        <div class="inline-code-panel" id="panel-${section}" style="display: none;">
-          <div class="inline-panel-header">
-            <div class="inline-tabs">
-              <button type="button" class="inline-tab" data-section="${section}" data-tab="html">HTML</button>
-              <button type="button" class="inline-tab" data-section="${section}" data-tab="css">CSS</button>
-              <button type="button" class="inline-tab" data-section="${section}" data-tab="js">JS</button>
-            </div>
-            <div class="inline-actions">
-              <span class="inline-copy-tooltip">복사 완료!</span>
-              <button type="button" class="inline-action-btn inline-copy-btn" data-section="${section}" title="코드 복사">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="action-icon"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
-              </button>
-              <button type="button" class="inline-action-btn inline-close-btn" data-section="${section}" title="닫기">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="action-icon"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-              </button>
-            </div>
-          </div>
-          <div class="inline-panel-body">
-            <pre class="inline-code-content"></pre>
-          </div>
-        </div>
-      `;
-      badge.insertAdjacentHTML('afterend', panelHtml);
-    });
-
-    // 구역별 소스 보기 버튼(.btn-inspect) 클릭 핸들러 연동
-    inspectButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const section = btn.getAttribute('data-section');
-        const type = btn.getAttribute('data-type');
-        toggleInlinePanel(section, type);
-      });
-    });
-
-    // 동적 생성된 인라인 패널 탭 버튼들의 이벤트 처리
-    document.querySelectorAll('.inline-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        const section = tab.getAttribute('data-section');
-        const type = tab.getAttribute('data-tab');
-        switchInlineTab(section, type);
-      });
-    });
-
-    // 닫기 버튼 이벤트 처리
-    document.querySelectorAll('.inline-close-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const section = btn.getAttribute('data-section');
-        const panel = document.getElementById(`panel-${section}`);
-        panel.style.display = 'none';
-
-        // 툴바 내부 모든 버튼의 활성화 상태(active) 리셋
-        const badge = panel.previousElementSibling;
-        badge.querySelectorAll('.btn-inspect').forEach(b => b.classList.remove('active'));
-      });
-    });
-
-    // 복사 버튼 이벤트 처리
-    document.querySelectorAll('.inline-copy-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const section = btn.getAttribute('data-section');
-        const panel = document.getElementById(`panel-${section}`);
-        const codePre = panel.querySelector('.inline-code-content');
-        const tooltip = panel.querySelector('.inline-copy-tooltip');
-
-        // 복사할 텍스트 추출 (구문강조용 span 태그가 제거된 텍스트)
-        const rawCode = codePre.textContent;
-
-        navigator.clipboard.writeText(rawCode).then(() => {
-          tooltip.classList.add('show');
-          setTimeout(() => {
-            tooltip.classList.remove('show');
-          }, 1500);
-        }).catch(err => {
-          console.error('인라인 코드 복사 실패:', err);
-        });
-      });
-    });
-  }
-
-  // 아코디언 패널 토글 함수
-  function toggleInlinePanel(section, type) {
-    const panel = document.getElementById(`panel-${section}`);
-    const badge = panel.previousElementSibling;
-    const clickedBtn = badge.querySelector(`.btn-inspect[data-type="${type}"]`);
-
-    // 만약 이미 동일한 패널이 열려 있고 동일 탭 버튼이 활성화된 상태라면 접기(토글 닫기)
-    if (panel.style.display === 'block' && clickedBtn.classList.contains('active')) {
-      panel.style.display = 'none';
-      clickedBtn.classList.remove('active');
-      return;
-    }
-
-    // 툴바 내부 모든 버튼의 active 리셋 후 현재 클릭한 버튼에 active 주입
-    badge.querySelectorAll('.btn-inspect').forEach(b => b.classList.remove('active'));
-    clickedBtn.classList.add('active');
-
-    // 패널 노출
-    panel.style.display = 'block';
-
-    // 해당 패널 탭 활성화 및 렌더링 시작
-    switchInlineTab(section, type);
-  }
-
-  // 인라인 패널 내에서 탭 전환
-  function switchInlineTab(section, type) {
-    const panel = document.getElementById(`panel-${section}`);
-    const codePre = panel.querySelector('.inline-code-content');
-
-    // 패널 헤더 내부 탭들의 활성화 클래스 스위칭
-    panel.querySelectorAll('.inline-tab').forEach(tab => {
-      if (tab.getAttribute('data-tab') === type) {
-        tab.classList.add('active');
-      } else {
-        tab.classList.remove('active');
-      }
-    });
-
-    activeSection = section; // 렌더링 슬라이싱용 구역 매핑
-
-    // 데이터가 이미 로드된 경우 즉시 렌더링, 없으면 fetch
-    if (sources[type].loaded) {
-      const parsedCode = extractSectionCode(sources[type].content, section, type);
-      codePre.innerHTML = highlightCode(parsedCode, type);
-    } else {
-      fetchSourceForInline(section, type);
-    }
-  }
-
-  // 인라인 뷰어용 비동기 소스 로딩
-  function fetchSourceForInline(section, type) {
-    let targetUrl = '';
-    if (type === 'html') targetUrl = currentUrl;
-    else if (type === 'css') targetUrl = cssUrl;
-    else if (type === 'js') targetUrl = jsUrl;
-
-    const panel = document.getElementById(`panel-${section}`);
-    const codePre = panel.querySelector('.inline-code-content');
-    codePre.innerHTML = '<span class="code-comment">// 소스 코드를 불러오는 중입니다...</span>';
-
-    fetch(targetUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
-        }
-        return response.text();
-      })
-      .then(text => {
-        sources[type].content = text;
-        sources[type].loaded = true;
-        const parsedCode = extractSectionCode(text, section, type);
-        codePre.innerHTML = highlightCode(parsedCode, type);
-      })
-      .catch(err => {
-        codePre.innerHTML = `<span class="code-comment">// 오류 발생: ${err.message}\n// 파일이 존재하지 않거나 로컬 실행(file://) 정책 제약으로 인해 발생했을 수 있습니다.\n// 이 경우 로컬 웹 서버 환경(예: VS Code Live Server 등)에서 확인해 주셔야 합니다.</span>`;
-      });
-  }
-
-
-  // ==========================================
-  // [전역 레거시 서랍 오버레이 관련 로직 (폴백 대응)]
-  // ==========================================
-
-  let overlay, drawer, closeBtn, copyBtn, copyTooltip, tabs;
+  // 4. 전역/인라인 뷰어 상태 및 공통 변수들
+  let overlay, drawer, closeBtn, copyBtn, copyTooltip, tabs, titleEl;
   let codePanels = {};
   let currentTab = 'html';
 
-  function createLegacyDrawerUI() {
-    // 하단 플로팅 독 생성
-    const dockHtml = `
-      <div class="source-inspector-dock">
-        <button class="inspector-btn" data-type="html">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          <span>소스자세히보기</span>
-        </button>
-        <button class="inspector-btn" data-type="css">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-          <span>CSS 자세히보기</span>
-        </button>
-        <button class="inspector-btn" data-type="js">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6"/><path d="M8 6L2 12l6 6"/></svg>
-          <span>JS 자세히보기</span>
-        </button>
-      </div>
-    `;
+  // 5. 풀 팝업 코드 뷰어 UI 빌딩 및 초기 실행
+  createDrawerUI();
 
-    // 서랍 모달 및 오버레이 마크업
+  function createDrawerUI() {
+    // 하단 플로팅 독 생성 (구역 배지가 없는 페이지만 노출)
+    let dockHtml = '';
+    if (!hasSectionBadges) {
+      dockHtml = `
+        <div class="source-inspector-dock">
+          <button class="inspector-btn" data-type="html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <span>소스자세히보기</span>
+          </button>
+          <button class="inspector-btn" data-type="css">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <span>CSS 자세히보기</span>
+          </button>
+          <button class="inspector-btn" data-type="js">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l6-6-6-6"/><path d="M8 6L2 12l6 6"/></svg>
+            <span>JS 자세히보기</span>
+          </button>
+        </div>
+      `;
+    }
+
+    // 풀 팝업 모달 마크업
     const drawerHtml = `
       <div class="inspector-drawer-overlay"></div>
       <div class="inspector-drawer">
         <div class="inspector-drawer-header">
+          <div class="inspector-header-left">
+            <h2 class="inspector-title" id="inspector-popup-title">소스 코드</h2>
+          </div>
           <div class="inspector-tabs">
             <div class="inspector-tab" data-tab="html">HTML</div>
             <div class="inspector-tab" data-tab="css">CSS</div>
@@ -285,20 +112,52 @@ document.addEventListener('DOMContentLoaded', () => {
     copyBtn = document.querySelector('.inspector-copy-btn');
     copyTooltip = document.querySelector('.copy-tooltip');
     tabs = document.querySelectorAll('.inspector-tab');
+    titleEl = document.getElementById('inspector-popup-title');
     codePanels = {
       html: document.getElementById('code-html'),
       css: document.getElementById('code-css'),
       js: document.getElementById('code-js')
     };
 
-    // 플로팅 독 버튼 클릭 이벤트
-    document.querySelectorAll('.inspector-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        activeSection = null; // 전역 모드이므로 구역 필터링 해제
-        const type = btn.getAttribute('data-type');
-        openDrawer(type);
+    // 5-1. 배지가 없는 경우: 하단 플로팅 독 버튼 클릭 이벤트 바인딩
+    if (!hasSectionBadges) {
+      document.querySelectorAll('.inspector-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeSection = null; // 전역 모드이므로 구역 필터링 해제
+          if (titleEl) {
+            titleEl.textContent = '전체 소스 코드';
+          }
+          const type = btn.getAttribute('data-type');
+          openDrawer(type);
+        });
       });
-    });
+    }
+
+    // 5-2. 배지가 있는 경우: 각 독립 소스 보기 버튼 클릭 시 팝업 열기 바인딩
+    if (hasSectionBadges) {
+      inspectButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeSection = btn.getAttribute('data-section');
+          const type = btn.getAttribute('data-type');
+
+          // 섹션 설명 텍스트 추출 (예: "안내카드 소스")
+          const badge = btn.closest('.section-code-badge');
+          let labelText = '소스 코드';
+          if (badge) {
+            const labelEl = badge.querySelector('.badge-label');
+            if (labelEl) {
+              labelText = labelEl.textContent.trim().replace(/:$/, '');
+            }
+          }
+
+          if (titleEl) {
+            titleEl.textContent = labelText;
+          }
+
+          openDrawer(type);
+        });
+      });
+    }
 
     // 닫기 및 탭 연동
     closeBtn.addEventListener('click', closeDrawer);

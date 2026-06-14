@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가입 정보 및 고지 사항 입력</title>
+  
+  <!-- 전역 공통 변수 및 기본 초기화 스타일 불러오기 -->
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <!-- 본 페이지 전용 독립 스타일시트 불러오기 (HTML 파일명 기준 추출) -->
+  <link rel="stylesheet" href="../assets/temp/n_page01.css">
+</head>
+<body>
+
+  <!-- [메인 모바일 모형 래퍼] 스마트폰 화면 비율의 컨테이너 -->
+  <main class="app-wrapper">
+
+    <!-- 스크롤 가능한 본문 영역 -->
+    <div class="app-content">
+
+      <!-- 1번 템플릿 구역: 정보 입력 폼 -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">1번 템플릿: 정보 입력 폼 및 단계바</h2>
+        
+        <div class="template-card">
+          <!-- START: SECTION_1 -->
+          <!-- 1번 템플릿 정보 입력 폼 -->
+          <div class="form-template-container">
+            <!-- 단계바 헤더 -->
+            <div class="form-step-row">
+              <!-- 1단계 (활성) -->
+              <div class="step-badge-item" data-state="on">
+                <div class="step-circle-num">1</div>
+                <span class="step-badge-text">고객입력</span>
+              </div>
+              <!-- 2단계 -->
+              <div class="step-badge-item" data-state="off">
+                <div class="step-circle-num">2</div>
+              </div>
+              <!-- 3단계 -->
+              <div class="step-badge-item" data-state="off">
+                <div class="step-circle-num">3</div>
+              </div>
+              <!-- 4단계 -->
+              <div class="step-badge-item" data-state="off">
+                <div class="step-circle-num">4</div>
+              </div>
+            </div>
+
+            <!-- 안내글 그룹 -->
+            <div class="form-title-group">
+              <h3 class="form-main-title">AI가입설계 도우미</h3>
+              <p class="form-description-box">
+                등록고객은 <span class="highlight-red">고객명 검색 후 AI설계</span> 진행 가능하고,<br/>
+                미등록고객은 <span class="highlight-red">신규고객등록</span> 또는 <span class="highlight-red">단순설계</span>로 <br/>
+                진행 가능합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- 상세설계 / 단순설계 탭바 -->
+          <div class="design-type-tabs">
+            <div class="design-tab-button" data-state="inactive">
+              <span class="design-tab-text">상세설계</span>
+            </div>
+            <div class="design-tab-button" data-state="active">
+              <span class="design-tab-text">단순설계</span>
+            </div>
+          </div>
+
+          <!-- 입력 필드 그룹 본체 -->
+          <div class="form-template-container">
+            <div class="form-input-section">
+              
+              <!-- 피보험자 입력 -->
+              <div class="input-field-group">
+                <span class="field-label">피보험자</span>
+                <div class="input-box-wrapper">
+                  <input type="text" class="input-placeholder-text" placeholder="피보험자명을 입력하세요." autocomplete="off">
+                </div>
+              </div>
+
+              <!-- 성별 선택 -->
+              <div class="input-field-group">
+                <span class="field-label">성별</span>
+                <div class="btn-select-grid">
+                  <label class="btn-select-item gender-select-item">
+                    <input type="radio" name="gender" value="남성" class="radio-input" checked>
+                    <span class="btn-select-text">남성</span>
+                  </label>
+                  <label class="btn-select-item gender-select-item">
+                    <input type="radio" name="gender" value="여성" class="radio-input">
+                    <span class="btn-select-text">여성</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 연령 입력 -->
+              <div class="input-field-group">
+                <span class="field-label">연령</span>
+                <div class="input-box-wrapper">
+                  <input type="number" class="input-placeholder-text" placeholder="숫자로 입력하세요." min="0" max="120">
+                  <div class="age-calc-row" style="width: auto;">
+                    <span class="age-unit-text">세</span>
+                    <div class="btn-age-calc">
+                      <span class="btn-age-calc-text">연령계산</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 직업 입력 -->
+              <div class="input-field-group">
+                <span class="field-label">직업</span>
+                <div class="input-box-wrapper">
+                  <input type="text" class="input-placeholder-text" placeholder="직업명 또는 직업코드를 검색하세요." autocomplete="off">
+                  <div class="job-search-icon-btn" aria-label="검색">
+                    <div class="job-search-circle"></div>
+                    <div class="job-search-handle"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 직업급수 선택 -->
+              <div class="input-field-group">
+                <span class="field-label">직업급수</span>
+                <div class="grade-select-wrapper">
+                  <div class="grade-select-grid">
+                    <label class="btn-select-item grade-select-item">
+                      <input type="radio" name="grade" value="1급" class="radio-input">
+                      <span class="btn-select-text">1급</span>
+                    </label>
+                    <label class="btn-select-item grade-select-item">
+                      <input type="radio" name="grade" value="2급" class="radio-input">
+                      <span class="btn-select-text">2급</span>
+                    </label>
+                    <label class="btn-select-item grade-select-item">
+                      <input type="radio" name="grade" value="3급" class="radio-input">
+                      <span class="btn-select-text">3급</span>
+                    </label>
+                  </div>
+                  <div class="readonly-box">
+                    <span>선택대기</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 운전용도 선택 -->
+              <div class="input-field-group">
+                <span class="field-label">운전용도</span>
+                <div class="btn-select-grid" style="width: 100%;">
+                  <label class="btn-select-item drive-select-item">
+                    <input type="radio" name="drive" value="자가용" class="radio-input" checked>
+                    <span class="btn-select-text">자가용</span>
+                  </label>
+                  <label class="btn-select-item drive-select-item">
+                    <input type="radio" name="drive" value="영업용" class="radio-input">
+                    <span class="btn-select-text">영업용</span>
+                  </label>
+                  <label class="btn-select-item drive-select-item">
+                    <input type="radio" name="drive" value="운전안함" class="radio-input">
+                    <span class="btn-select-text">운전안함</span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- END: SECTION_1 -->
+        </div>
+
+        <!-- 구역 1 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">정보입력 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_1" data-type="js">JS</button>
+        </div>
+      </section>
+
+
+      <!-- 2번 템플릿 구역: 상품유형 선택 -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">2번 템플릿: 상품유형 선택 및 가이드</h2>
+        
+        <!-- START: SECTION_2 -->
+        <!-- 2번 템플릿 상품유형 선택 -->
+        <div class="product-type-container">
+          <!-- 헤더 영역 -->
+          <header class="product-header-row">
+            <div class="illust-badge-icon">
+              <div class="illust-badge-base"></div>
+              <div class="illust-badge-circle"></div>
+            </div>
+            <h3 class="product-header-title">상품유형을 선택해 주세요.</h3>
+          </header>
+
+          <!-- 라디오 카드 그리드 -->
+          <div class="product-card-grid">
+            <!-- 유병자 상품 -->
+            <label class="product-type-card">
+              <input type="radio" name="product_type" value="유병자 전용상품" class="radio-input">
+              <div class="card-radio-circle">
+                <div class="card-radio-bg"></div>
+                <div class="card-radio-check"></div>
+              </div>
+              <span class="product-card-label">유병자 전용상품</span>
+            </label>
+            <!-- 건강체 상품 -->
+            <label class="product-type-card">
+              <input type="radio" name="product_type" value="건강체 전용상품" class="radio-input">
+              <div class="card-radio-circle">
+                <div class="card-radio-bg"></div>
+                <div class="card-radio-check"></div>
+              </div>
+              <span class="product-card-label">건강체 전용상품</span>
+            </label>
+          </div>
+
+          <!-- 상세 설명 안내 박스 -->
+          <div class="product-desc-box">
+            <div class="desc-bullet-row">
+              <div class="desc-bullet-dot"></div>
+              <div class="desc-text-group">
+                <span class="desc-main-text">유병자전용 상품은 병력고지 및 심사가 간편함</span>
+                <span class="desc-sub-text">(단, 진단/입원/수술한 이력에 대한 정보 입력이 필요합니다.)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END: SECTION_2 -->
+
+        <!-- 구역 2 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">상품유형 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_2" data-type="js">JS</button>
+        </div>
+      </section>
+
+
+      <!-- 3번 템플릿 구역: 질병 고지 질문지 -->
+      <section class="template-section relative-section">
+        <h2 class="template-title">3번 템플릿: 질병 고지서 질문지</h2>
+        
+        <!-- START: SECTION_3 -->
+        <!-- 3번 템플릿 질병 고지서 -->
+        <div class="questionnaire-container">
+          <!-- 일괄선택 제어 헤더 -->
+          <header class="question-header-row">
+            <div class="question-header-left">
+              <div class="question-check-box-icon"></div>
+              <span class="question-header-desc">아래 항목을 확인 후 체크해 주세요.</span>
+            </div>
+            <!-- 일괄 '아니오' 버튼 -->
+            <div class="all-no-trigger-btn" data-state="default">
+              <div class="all-no-circle">
+                <div class="all-no-check-icon"></div>
+              </div>
+              <span class="all-no-label">전부 아니오</span>
+            </div>
+          </header>
+
+          <!-- 질문 블록 그룹 -->
+          <div class="question-list-group">
+            
+            <!-- 질문 1 -->
+            <div class="question-block">
+              <div class="question-title-row">
+                <span class="question-number">1.</span>
+                <p class="question-text-box">최근 3개월 이내에 의사로부터 질병 진단/입원 또는 수술 소견/재검사 소견 받은 사실이 있습니까?</p>
+              </div>
+              <div class="answer-card-row">
+                <!-- 네 -->
+                <label class="answer-card-item">
+                  <input type="radio" name="q1" value="예" class="radio-input">
+                  <div class="answer-radio-circle">
+                    <div class="answer-check-icon"></div>
+                  </div>
+                  <span class="answer-label-text">네, 있습니다.</span>
+                </label>
+                <!-- 아니오 -->
+                <label class="answer-card-item">
+                  <input type="radio" name="q1" value="아니오" class="radio-input">
+                  <div class="answer-radio-circle">
+                    <div class="answer-check-icon"></div>
+                  </div>
+                  <span class="answer-label-text">아니오, 없습니다.</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 질문 2 -->
+            <div class="question-block">
+              <div class="question-title-row">
+                <span class="question-number">2.</span>
+                <p class="question-text-box">최근 10년이내 질병이나 상해사고로 인하여 입원 또는 수술을 받은 사실이 있습니까?</p>
+              </div>
+              <div class="answer-card-row">
+                <!-- 네 -->
+                <label class="answer-card-item">
+                  <input type="radio" name="q2" value="예" class="radio-input">
+                  <div class="answer-radio-circle">
+                    <div class="answer-check-icon"></div>
+                  </div>
+                  <span class="answer-label-text">네, 있습니다.</span>
+                </label>
+                <!-- 아니오 -->
+                <label class="answer-card-item">
+                  <input type="radio" name="q2" value="아니오" class="radio-input">
+                  <div class="answer-radio-circle">
+                    <div class="answer-check-icon"></div>
+                  </div>
+                  <span class="answer-label-text">아니오, 없습니다.</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- 질문 3 -->
+            <div class="question-block">
+              <div class="question-title-row">
+                <span class="question-number">3.</span>
+                <div class="question-text-box">
+                  <span>최근 5년이내 6대질병으로 진단받거나 입원 또는 수술을 받은 사실이 있습니까?</span>
+                  <p class="question-sub-desc">※ 6대 질병 : 암, 협심증, 심근경색, 심장판막증, 간경화증, 뇌졸중</p>
+                </div>
+              </div>
+              <div class="answer-card-row">
+                <!-- 네 -->
+                <label class="answer-card-item">
+                  <input type="radio" name="q3" value="예" class="radio-input">
+                  <div class="answer-radio-circle">
+                    <div class="answer-check-icon"></div>
+                  </div>
+                  <span class="answer-label-text">네, 있습니다.</span>
+                </label>
+                <!-- 아니오 -->
+                <label class="answer-card-item">
+                  <input type="radio" name="q3" value="아니오" class="radio-input">
+                  <div class="answer-radio-circle">
+                    <div class="answer-check-icon"></div>
+                  </div>
+                  <span class="answer-label-text">아니오, 없습니다.</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- END: SECTION_3 -->
+
+        <!-- 구역 3 소스보기 배지 그룹 (100% 너비 툴바) -->
+        <div class="section-code-badge">
+          <span class="badge-label">질문지 소스:</span>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="html">HTML</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="css">CSS</button>
+          <button type="button" class="btn-inspect" data-section="SECTION_3" data-type="js">JS</button>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- [화면 알림 레이아웃] 동적 인터랙션 작동 시 하단에 노출될 토스트 메시지 -->
+  <div class="toast-message" id="page-toast">
+    <span id="page-toast-text">알림 메시지</span>
+  </div>
+
+  <!-- [공통 요구사항] 소스 코드 뷰어 위젯 스크립트 연결 -->
+  <script src="../assets/js/inspector.js"></script>
+  <!-- 본 페이지 전용 독립 스크립트 연결 (HTML 파일명 기준 추출) -->
+  <script src="../assets/temp/n_page01.js"></script>
+</body>
+</html>
